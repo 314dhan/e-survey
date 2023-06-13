@@ -11,7 +11,9 @@ if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true){
 }
 
 // Ambil data nama dosen dari session
-$dosen = $_SESSION['dosen'];
+$role = $_SESSION['role'];
+$dosen = $_SESSION['nama'];
+
 
 ?>
 
@@ -21,6 +23,7 @@ $dosen = $_SESSION['dosen'];
     <title>Halaman Dosen</title>
 </head>
 <body>
+    <h4><a href="logout.php">Logout</a></h4>
     <h2>Selamat datang, <?php echo $dosen; ?>!</h2>
     <!-- Tampilkan data atau konten halaman lainnya -->
 </body>

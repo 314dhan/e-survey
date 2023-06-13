@@ -34,8 +34,8 @@ if(mysqli_num_rows($result) === 1){
     <title>Halaman Mahasiswa</title>
 </head>
 <body>
-    <h4><a href="logout.php">Logout</a>
-</h4>
+    <h4><a href="logout.php">Logout</a></h4>
+    
     <h1>Selamat datang, <?php echo $username; ?>!</h1>
     <!-- Tampilkan data atau konten halaman lainnya -->
 </body>

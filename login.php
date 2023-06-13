@@ -4,19 +4,16 @@ session_start();
 
 // Cek apakah pengguna sudah login menggunakan session
 if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true){
-    // Jika sudah login, redirect ke halaman lain atau tampilkan pesan selamat datang
-    header("Location: mahasiswa.php");
-    exit;
+    // Jika pengguna sudah login, redirect ke halaman yang sesuai
+    if($_SESSION['role'] === 'mahasiswa'){
+        header("Location: mahasiswa.php");
+        exit;
+    } elseif($_SESSION['role'] === 'dosen'){
+        header("Location: dosen.php");
+        exit;
+    }
 }
-
-// Include file konfigurasi database
-require_once 'connection.php';
-
-// Include file untuk melakukan validasi login
-require_once 'login_process.php';
-
 ?>
-
 <!DOCTYPE html>
 <html>
 <head>
