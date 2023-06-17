@@ -14,16 +14,9 @@ if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true){
 $role = $_SESSION['role'];
 $dosen = $_SESSION['nama'];
 
+$pageTitle = "Dosen";
+require "../header.php";
 ?>
 
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Halaman Dosen</title>
-</head>
-<body>
-    <h4><a href="../../controller/logoutController.php">Logout</a></h4>
-    <h2>Selamat datang, <?php echo $dosen; ?>!</h2>
-    <!-- Tampilkan data atau konten halaman lainnya -->
-</body>
-</html>
+<h4><a href="../../controller/logoutController.php">Logout</a></h4>
+<h2>Selamat datang, <?php echo $dosen; ?>!</h2>

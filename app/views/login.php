@@ -13,14 +13,11 @@ if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true){
         exit;
     }
 }
+
+$pageTitle = "Login";
+require "header.php";
 ?>
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Form Login</title>
-    <link rel="stylesheet" type="text/css" href="../../styles/style.css">
-    <link rel="stylesheet" type="text/css" href="../../bootstrap/css/bootstrap.min.css">
-</head>
+
 <body>
     <div class="container">
         <div class="row justify-content-center">
@@ -54,6 +51,5 @@ if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true){
     </div>
 
     <script src="bootstrap.min.js"></script>
-</body>
-</html>
+
 
