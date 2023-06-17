@@ -1,5 +1,5 @@
 <?php
-require_once "connection.php";
+require "../../config/connection.php";
 
 // Cek apakah ada data login yang disubmit
 if(isset($_POST['login'])){
@@ -7,12 +7,19 @@ if(isset($_POST['login'])){
     $password = $_POST['password'];
 
     // Query untuk mendapatkan data mahasiswa berdasarkan email
-    $queryMahasiswa = "SELECT * FROM mhs WHERE email = '$email'";
-    $resultMahasiswa = mysqli_query($conn, $queryMahasiswa);
-
+    $queryMahasiswa = "SELECT * FROM mhs WHERE email = ?";
+    $stmtMahasiswa = mysqli_prepare($conn, $queryMahasiswa);
+    mysqli_stmt_bind_param($stmtMahasiswa, "s", $email);
+    mysqli_stmt_execute($stmtMahasiswa);
+    $resultMahasiswa = mysqli_stmt_get_result($stmtMahasiswa);
+    
     // Query untuk mendapatkan data dosen berdasarkan email
-    $queryDosen = "SELECT * FROM ds WHERE email = '$email'";
-    $resultDosen = mysqli_query($conn, $queryDosen);
+    $queryDosen = "SELECT * FROM ds WHERE email = ?";
+    $stmtDosen = mysqli_prepare($conn, $queryDosen);
+    mysqli_stmt_bind_param($stmtDosen, "s", $email);
+    mysqli_stmt_execute($stmtDosen);
+    $resultDosen = mysqli_stmt_get_result($stmtDosen);
+
 
     // Memeriksa apakah pengguna ditemukan sebagai mahasiswa
     if(mysqli_num_rows($resultMahasiswa) === 1){
@@ -28,7 +35,7 @@ if(isset($_POST['login'])){
             $_SESSION['role'] = 'mahasiswa';
             $_SESSION['nama'] = $row['nama'];
 
-            header("Location: mahasiswa.php");
+            header("Location: ../views/mahasiswa/mahasiswa.php");
             exit;
         } else {
             // Jika password tidak cocok, tampilkan pesan error
@@ -50,7 +57,7 @@ if(isset($_POST['login'])){
             $_SESSION['role'] = 'dosen';
             $_SESSION['nama'] = $row['nama'];
 
-            header("Location: dosen.php");
+            header("Location: ../views/dosen/dosen.php");
             exit;
         } else {
             // Jika password tidak cocok, tampilkan pesan error

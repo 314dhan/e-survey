@@ -6,10 +6,10 @@ session_start();
 if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true){
     // Jika pengguna sudah login, redirect ke halaman yang sesuai
     if($_SESSION['role'] === 'mahasiswa'){
-        header("Location: mahasiswa.php");
+        header("Location: mahasiswa/mahasiswa.php");
         exit;
     } elseif($_SESSION['role'] === 'dosen'){
-        header("Location: dosen.php");
+        header("Location: dosen/dosen.php");
         exit;
     }
 }
@@ -18,8 +18,8 @@ if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true){
 <html>
 <head>
     <title>Form Login</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../../styles/style.css">
+    <link rel="stylesheet" type="text/css" href="../../bootstrap/css/bootstrap.min.css">
 </head>
 <body>
     <div class="container">
@@ -32,7 +32,7 @@ if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true){
                             </div>
                         <?php } ?>
                     <h2 class="text-center">Form Login</h2>
-                    <form method="POST" action="login_process.php">
+                    <form method="POST" action="../controller/loginController.php">
                         <div class="mb-3">
                             <label for="email" class="form-label">Email:</label>
                             <input type="email" id="email" name="email" class="form-control" required>
@@ -44,8 +44,9 @@ if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true){
                         <div class="d-grid">
                             <button type="submit" name="login" class="btn btn-primary">Login</button>
                         </div>
-                        
-                        
+                        <div>
+                            <h4><a href="register.php">Daftar?</a></h4>
+                        </div>
                     </form>
                 </div>
             </div>

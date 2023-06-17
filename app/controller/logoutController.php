@@ -5,6 +5,6 @@ session_start();
 session_destroy();
 
 // Redirect ke halaman login atau halaman lain yang sesuai
-header("Location: login.php");
+header("Location: ../views/login.php");
 exit;
 ?>
