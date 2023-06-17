@@ -1,10 +1,7 @@
-<!-- register.php -->
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Register</title>
-</head>
-<body>
+<?php
+$pageTitle = "Register";
+require "header.php";
+?>
     <h2>Register</h2>
     <form action="../controller/registerController.php" method="POST">
         <label for="email">Email:</label><br>
@@ -18,6 +15,7 @@
             <option value="mahasiswa">Mahasiswa</option>
         </select><br><br>
         <input type="submit" value="Register">
+        <button><a href="login.php">Kembali</a></button>
     </form>
 </body>
 </html>
