@@ -39,10 +39,11 @@ require "header.php";
                             <input type="password" id="password" name="password" class="form-control" required>
                         </div>
                         <div class="d-grid">
-                            <button type="submit" name="login" class="btn btn-primary">Login</button>
+                            <button type="submit" name="login" class="btn btn-primary">Masuk <i class="fa-solid fa-right-to-bracket"></i></button>
                         </div>
-                        <div>
-                            <h4><a href="register.php">Daftar?</a></h4>
+                        <div class="d-grid mt-3">
+                            <p>Belum punya akun?</p>
+                            <a href="register.php" class="btn btn-success">Daftar <i class="fa-regular fa-address-card"></i></a>
                         </div>
                     </form>
                 </div>

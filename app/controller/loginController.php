@@ -1,5 +1,6 @@
 <?php
-require "../../config/connection.php";
+
+require_once __DIR__ . '/../config/connection.php';
 
 // Cek apakah ada data login yang disubmit
 if(isset($_POST['login'])){
@@ -27,8 +28,9 @@ if(isset($_POST['login'])){
         $stored_password = $row['password'];
 
         // Memeriksa kecocokan password
-        if($password === $stored_password){
+        if(password_verify($password, $stored_password)){
             // Jika password cocok, set session dan redirect ke halaman mahasiswa
+            setcookie("user_role", $_SESSION['role'], time() + (86400 * 30), "/"); // Cookie berlaku selama 30 hari
             session_start();
             $_SESSION['loggedin'] = true;
             $_SESSION['email'] = $email;
@@ -49,8 +51,9 @@ if(isset($_POST['login'])){
         $stored_password = $row['password'];
 
         // Memeriksa kecocokan password
-        if($password === $stored_password){
+        if(password_verify($password, $stored_password)){
             // Jika password cocok, set session dan redirect ke halaman dosen
+            setcookie("user_role", $_SESSION['role'], time() + (86400 * 30), "/"); // Cookie berlaku selama 30 hari
             session_start();
             $_SESSION['loggedin'] = true;
             $_SESSION['email'] = $email;
@@ -70,4 +73,3 @@ if(isset($_POST['login'])){
         echo $error;
     }
 }
-?>

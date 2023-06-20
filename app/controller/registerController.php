@@ -1,5 +1,5 @@
 <?php
-require_once "../../config/connection.php";
+require_once __DIR__ . '/../config/connection.php';
 
 if(isset($_POST['email']) && isset($_POST['nama']) && isset($_POST['password']) && isset($_POST['role'])){
     $email = $_POST['email'];
