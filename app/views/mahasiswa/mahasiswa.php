@@ -28,14 +28,13 @@ if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true){
 $role = $_SESSION['role'];
 $nama = $_SESSION['nama'];
 
-$pageTitle = "Survei Mahasiswa";
+$pageTitle = "Survey Mahasiswa";
+$studentName = "<h2>Selamat Datang, $nama!</h2>";
 require "../navbar.php";
 ?>
 <div class="container">
 
-    <h1>Selamat datang, <?php echo $nama; ?>!</h4></h1>
-    
-    <h2>Survei Mahasiswa</h2>
+    <h1 style="text-align: center;">Selamat datang, <?= $nama; ?>!</h4></h1>
 
     <h3>Pertanyaan Survei</h3>
 <form action="../../controller/surveyController.php" method="post">
@@ -52,76 +51,79 @@ require "../navbar.php";
                     <th>sangat kurang</th>
                 </tr>
                 <tr>
+                <input type="hidden" name="nama" value="<?= $nama ?>">
+                </tr>
+                <tr>
                     <td>1</td>
                     <td><p>Seberapa puas Anda dengan fasilitas kampus?</p></td>
-                    <td><input type="radio" name="jawaban1" value="1"></td>
-                    <td><input type="radio" name="jawaban1" value="2"></td>
-                    <td><input type="radio" name="jawaban1" value="3"></td>
-                    <td><input type="radio" name="jawaban1" value="4"></td>
-                    <td><input type="radio" name="jawaban1" value="5"></td>
+                    <td><input type="radio" name="jawaban1" value="Sangat Buruk"></td>
+                    <td><input type="radio" name="jawaban1" value="Buruk"></td>
+                    <td><input type="radio" name="jawaban1" value="Cukup"></td>
+                    <td><input type="radio" name="jawaban1" value="Baik"></td>
+                    <td><input type="radio" name="jawaban1" value="Sangat Baik"></td>
                 </tr>
                 <tr>
                     <td>2</td>
                     <td><p>Bagaimana penilaian Anda terhadap kualitas pengajaran yang diberikan oleh dosen di kampus ini?</p></td>
-                    <td><input type="radio" name="jawaban2" value="1"></td>
-                    <td><input type="radio" name="jawaban2" value="2"></td>
-                    <td><input type="radio" name="jawaban2" value="3"></td>
-                    <td><input type="radio" name="jawaban2" value="4"></td>
-                    <td><input type="radio" name="jawaban2" value="5"></td>
+                    <td><input type="radio" name="jawaban2" value="Sangat Buruk"></td>
+                    <td><input type="radio" name="jawaban2" value="Buruk"></td>
+                    <td><input type="radio" name="jawaban2" value="Cukup"></td>
+                    <td><input type="radio" name="jawaban2" value="Baik"></td>
+                    <td><input type="radio" name="jawaban2" value="Sangat Baik"></td>
                 </tr>
                 <tr>
                     <td>3</td>
                     <td><p>Sejauh mana kampus ini menyediakan fasilitas yang memadai untuk mendukung kegiatan belajar-mengajar?</p></td>
-                    <td><input type="radio" name="jawaban3" value="1"></td>
-                    <td><input type="radio" name="jawaban3" value="2"></td>
-                    <td><input type="radio" name="jawaban3" value="3"></td>
-                    <td><input type="radio" name="jawaban3" value="4"></td>
-                    <td><input type="radio" name="jawaban3" value="5"></td>
+                    <td><input type="radio" name="jawaban3" value="Sangat Buruk"></td>
+                    <td><input type="radio" name="jawaban3" value="Buruk"></td>
+                    <td><input type="radio" name="jawaban3" value="Cukup"></td>
+                    <td><input type="radio" name="jawaban3" value="Baik"></td>
+                    <td><input type="radio" name="jawaban3" value="Sangat Baik"></td>
                 </tr>
                 <tr>
                     <td>4</td>
                     <td><p>Bagaimana tingkat kepuasan Anda terhadap layanan administrasi dan pelayanan mahasiswa di kampus ini?</p></td>
-                    <td><input type="radio" name="jawaban4" value="1"></td>
-                    <td><input type="radio" name="jawaban4" value="2"></td>
-                    <td><input type="radio" name="jawaban4" value="3"></td>
-                    <td><input type="radio" name="jawaban4" value="4"></td>
-                    <td><input type="radio" name="jawaban4" value="5"></td>
+                    <td><input type="radio" name="jawaban4" value="Sangat Buruk"></td>
+                    <td><input type="radio" name="jawaban4" value="Buruk"></td>
+                    <td><input type="radio" name="jawaban4" value="Cukup"></td>
+                    <td><input type="radio" name="jawaban4" value="Baik"></td>
+                    <td><input type="radio" name="jawaban4" value="Sangat Baik"></td>
                 </tr>
                 <tr>
                     <td>5</td>
                     <td><p>Seberapa efektif sistem penilaian dan evaluasi di kampus ini dalam mengukur kemajuan dan pencapaian mahasiswa?</p></td>
-                    <td><input type="radio" name="jawaban5" value="1"></td>
-                    <td><input type="radio" name="jawaban5" value="2"></td>
-                    <td><input type="radio" name="jawaban5" value="3"></td>
-                    <td><input type="radio" name="jawaban5" value="4"></td>
-                    <td><input type="radio" name="jawaban5" value="5"></td>
+                    <td><input type="radio" name="jawaban5" value="Sangat Buruk"></td>
+                    <td><input type="radio" name="jawaban5" value="Buruk"></td>
+                    <td><input type="radio" name="jawaban5" value="Cukup"></td>
+                    <td><input type="radio" name="jawaban5" value="Baik"></td>
+                    <td><input type="radio" name="jawaban5" value="Sangat Baik"></td>
                 </tr>
                 <tr>
                     <td>6</td>
                     <td><p>Seberapa baik kampus ini memberikan kesempatan bagi mahasiswa untuk mengembangkan potensi dan minat di luar kegiatan akademik?</p></td>
-                    <td><input type="radio" name="jawaban6" value="1"></td>
-                    <td><input type="radio" name="jawaban6" value="2"></td>
-                    <td><input type="radio" name="jawaban6" value="3"></td>
-                    <td><input type="radio" name="jawaban6" value="4"></td>
-                    <td><input type="radio" name="jawaban6" value="5"></td>
+                    <td><input type="radio" name="jawaban6" value="Sangat Buruk"></td>
+                    <td><input type="radio" name="jawaban6" value="Buruk"></td>
+                    <td><input type="radio" name="jawaban6" value="Cukup"></td>
+                    <td><input type="radio" name="jawaban6" value="Baik"></td>
+                    <td><input type="radio" name="jawaban6" value="Sangat Baik"></td>
                 </tr>
                 <tr>
                     <td>7</td>
                     <td><p>Bagaimana penilaian Anda terhadap kualitas fasilitas perpustakaan yang tersedia di kampus ini?</p></td>
-                    <td><input type="radio" name="jawaban7" value="1"></td>
-                    <td><input type="radio" name="jawaban7" value="2"></td>
-                    <td><input type="radio" name="jawaban7" value="3"></td>
-                    <td><input type="radio" name="jawaban7" value="4"></td>
-                    <td><input type="radio" name="jawaban7" value="5"></td>
+                    <td><input type="radio" name="jawaban7" value="Sangat Buruk"></td>
+                    <td><input type="radio" name="jawaban7" value="Buruk"></td>
+                    <td><input type="radio" name="jawaban7" value="Cukup"></td>
+                    <td><input type="radio" name="jawaban7" value="Baik"></td>
+                    <td><input type="radio" name="jawaban7" value="Sangat Baik"></td>
                 </tr>
                 <tr>
                     <td>8</td>
                     <td><p>Seberapa efektif kampus ini dalam memberikan dukungan dan bimbingan karier bagi mahasiswa?</p></td>
-                    <td><input type="radio" name="jawaban8" value="1"></td>
-                    <td><input type="radio" name="jawaban8" value="2"></td>
-                    <td><input type="radio" name="jawaban8" value="3"></td>
-                    <td><input type="radio" name="jawaban8" value="4"></td>
-                    <td><input type="radio" name="jawaban8" value="5"></td>
+                    <td><input type="radio" name="jawaban8" value="Sangat Buruk"></td>
+                    <td><input type="radio" name="jawaban8" value="Buruk"></td>
+                    <td><input type="radio" name="jawaban8" value="Cukup"></td>
+                    <td><input type="radio" name="jawaban8" value="Baik"></td>
+                    <td><input type="radio" name="jawaban8" value="Sangat Baik"></td>
                 </tr>
                 <!-- <tr>
                     <td>9</td>
@@ -142,12 +144,10 @@ require "../navbar.php";
                     <td><input type="radio" name="jawaban10" value="Sangat Baik"></td>
                 </tr> -->
             </table>
-            <br><br>
-
         </div>
-        <input class="btn btn-success" type="submit" value="Kirim Survei">
-        </div>
+            <input class="btn btn-success" type="submit" name="submit" value="Kirim Survei">
 </form>
+</div>
 <?php
 require "../footer.php";
 
