@@ -14,8 +14,8 @@ if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true){
     }
 }
 
-$pageTitle = "Login";
-require "header.php";
+$pageTitle = "Login Admin";
+require "../header.php";
 ?>
 
 <body>
@@ -28,8 +28,8 @@ require "header.php";
                                 <?php echo $error; ?>
                             </div>
                         <?php } ?>
-                    <h2 class="text-center">Form Login</h2>
-                    <form method="POST" action="../controller/loginController.php">
+                    <h2 class="text-center">Admin Login</h2>
+                    <form method="POST" action="../../controller/adminController.php">
                         <div class="mb-3">
                             <label for="email" class="form-label">Email:</label>
                             <input type="email" id="email" name="email" class="form-control" autocomplete="off" required>
@@ -42,14 +42,9 @@ require "header.php";
                             <button type="submit" name="login" class="btn btn-primary">Masuk <i class="fa-solid fa-right-to-bracket"></i></button>
                         </div>
                         <div class="d-grid mt-3">
-                            <p>Belum punya akun?</p>
-                            <a href="register.php" class="btn btn-success">Daftar <i class="fa-regular fa-address-card"></i></a>
+                            <a href="../login.php">Kembali</a>
                         </div>
                     </form>
-                    <div class="d-grid mt-3">
-                        <p>Admin?</p>
-                        <a href="admin/login.php" class="btn btn-success">Masuk <i class="fa-solid fa-lock"></i></a>
-                    </div>
                 </div>
             </div>
         </div>
