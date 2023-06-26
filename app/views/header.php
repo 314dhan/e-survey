@@ -15,6 +15,7 @@ define('BASE_URL', 'http://localhost/presentasi/');
     <link rel="stylesheet" href="<?php echo BASE_URL; ?>public/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="<?php echo BASE_URL; ?>public/fontawesome/css/all.min.css">
     <link rel="stylesheet" href="<?php echo BASE_URL; ?>public/css/login.css">
+    <link rel="stylesheet" href="<?php echo BASE_URL; ?>public/css/admin.css">
 
     <!-- Import file JavaScript Bootstrap (jika diperlukan) -->
     <script src="<?php echo BASE_URL; ?>public/bootstrap/js/bootstrap.min.js"></script>

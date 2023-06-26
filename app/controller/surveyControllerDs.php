@@ -16,14 +16,14 @@ if (isset($_POST['submit'])) {
     $jawaban8 = $_POST['jawaban8'];
 
     // Menghindari serangan SQL Injection dengan menggunakan prepared statement
-    $sql = "INSERT INTO survey_mhs (nama, jawaban1, jawaban2, jawaban3, jawaban4, jawaban5, jawaban6, jawaban7, jawaban8) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO survey_ds (nama, jawaban1, jawaban2, jawaban3, jawaban4, jawaban5, jawaban6, jawaban7, jawaban8) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
     $stmt = mysqli_prepare($conn, $sql);
     mysqli_stmt_bind_param($stmt, "sssssssss", $nama, $jawaban1, $jawaban2, $jawaban3, $jawaban4, $jawaban5, $jawaban6, $jawaban7, $jawaban8);
 
     // Eksekusi prepared statement
     if (mysqli_stmt_execute($stmt)) {
         // Jika penyimpanan sukses, redirect ke halaman mahasiswa.php
-        header("Location: ../views/mahasiswa/mahasiswa.php");
+        header("Location: ../views/dosen/dosen.php");
         echo "berhasil?";
         exit;
     } else {
