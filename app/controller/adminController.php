@@ -1,0 +1,60 @@
+<?php
+require_once __DIR__ . '/../config/connection.php';
+
+// Cek apakah ada data login yang disubmit
+if(isset($_POST['login'])){
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+
+    // Query untuk mendapatkan data admin berdasarkan username
+    $queryAdmin = "SELECT * FROM admin WHERE username = ?";
+    $stmtAdmin = mysqli_prepare($conn, $queryAdmin);
+    mysqli_stmt_bind_param($stmtAdmin, "s", $username);
+    mysqli_stmt_execute($stmtAdmin);
+    $resultAdmin = mysqli_stmt_get_result($stmtAdmin);
+
+    if(mysqli_num_rows($resultAdmin) === 1){
+        $row = mysqli_fetch_assoc($resultAdmin);
+        $stored_password = $row['password'];
+
+        // Memeriksa kecocokan password
+        if($password === $stored_password){
+            setcookie("user_role", $_SESSION['role'], time() + (86400 * 30), "/");
+            session_start();
+            $_SESSION['loggedin'] = true;
+            $_SESSION['username'] = $username;
+            $_SESSION['role'] = 'admin';
+            $_SESSION['nama'] = $row['nama'];
+
+            header("Location: ../views/admin/admin.php");
+            exit;
+        } else {
+            // Jika password tidak cocok, tampilkan pesan error
+            $error = "Password salah!";
+            echo $error;
+        }
+    }
+}
+    // if(mysqli_num_rows($resultAdmin) === 1){
+    //     $row = mysqli_fetch_assoc($resultAdmin);
+    //     $stored_password = $row['password'];
+
+    //     // Memeriksa kecocokan password
+    //     if(password_verify($password, $stored_password)){
+    //         // Jika password cocok, set session dan redirect ke halaman mahasiswa
+    //         setcookie("user_role", $_SESSION['role'], time() + (86400 * 30), "/"); // Cookie berlaku selama 30 hari
+    //         session_start();
+    //         $_SESSION['loggedin'] = true;
+    //         $_SESSION['email'] = $email;
+    //         $_SESSION['role'] = 'mahasiswa';
+    //         $_SESSION['nama'] = $row['nama'];
+
+    //         header("Location: ../views/admin/admin.php");
+    //         exit;
+    //     } else {
+    //         // Jika password tidak cocok, tampilkan pesan error
+    //         $error = "Password salah!";
+    //         echo $error;
+    //     }
+    // }
+// }

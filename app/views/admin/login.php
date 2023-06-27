@@ -31,8 +31,8 @@ require "../header.php";
                     <h2 class="text-center">Admin Login</h2>
                     <form method="POST" action="../../controller/adminController.php">
                         <div class="mb-3">
-                            <label for="email" class="form-label">Email:</label>
-                            <input type="email" id="email" name="email" class="form-control" autocomplete="off" required>
+                            <label for="username" class="form-label">Email:</label>
+                            <input type="username" id="username" name="username" class="form-control" autocomplete="off" required>
                         </div>
                         <div class="mb-3">
                             <label for="password" class="form-label">Password:</label>

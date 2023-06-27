@@ -40,6 +40,7 @@ $resultMhs = mysqli_query($conn, $sql);
 <div class="chart-container">
     <canvas id="chart8"></canvas>
 </div>
+<a href="admin.php" class="btn btn-primary">Kembali</a>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
@@ -134,4 +135,6 @@ $resultMhs = mysqli_query($conn, $sql);
         });
     });
 </script>
-<?php require "../footer.php";
+<?php 
+
+require "../footer.php";
