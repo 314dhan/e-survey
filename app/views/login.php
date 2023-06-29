@@ -16,18 +16,25 @@ if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true){
 
 $pageTitle = "Login";
 require "header.php";
-?>
 
-<body>
+if(isset($_SESSION['error_message'])){
+    $error = $_SESSION['error_message'];
+    unset($_SESSION['error_message']);
+}
+?>
+    <?php if(isset($error)) :?>
+        <p style="color: red; font-style: italic;">email atau password salah</p>
+    <?php endif; ?>
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-6">
                 <div class="login-container">
-                        <?php if(isset($error)) { ?>
-                            <div class="alert alert-danger" role="alert">
-                                <?php echo $error; ?>
-                            </div>
-                        <?php } ?>
+                    <?php if(!empty($error)) { ?>
+                        <script>
+                            alert("<?php echo $error; ?>");
+                            location.reload();
+                        </script>
+                    <?php } ?>
                     <h2 class="text-center">Form Login</h2>
                     <form method="POST" action="../controller/loginController.php">
                         <div class="mb-3">
@@ -47,8 +54,7 @@ require "header.php";
                         </div>
                     </form>
                     <div class="d-grid mt-3">
-                        <p>Admin?</p>
-                        <a href="admin/login.php" class="btn btn-success">Masuk <i class="fa-solid fa-lock"></i></a>
+                        <a href="admin/login.php"><p>Login Sebagai Admin?</p></a>
                     </div>
                 </div>
             </div>

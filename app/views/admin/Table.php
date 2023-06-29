@@ -12,7 +12,7 @@ $resultMhs = mysqli_query($conn, $sql);
 ?>
 <div class='container' style='text-align: center;'>
 
-    <h2>Data Survey Dosen</h2>
+    <h1>Data Survey Dosen</h1>
     <table class="table table-bordered table-striped">
         <thead class="thead-dark">
             <tr>

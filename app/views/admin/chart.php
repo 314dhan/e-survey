@@ -2,10 +2,10 @@
 require "../../config/Connection.php";
 $pageTitle = "admin";
 require "../header.php";
-$sql = "SELECT * FROM survey_ds";
+$sql = "SELECT jawaban1, jawaban2, jawaban3, jawaban4, jawaban5, jawaban6, jawaban7, jawaban8 FROM survey_ds";
 $resultDs = mysqli_query($conn, $sql);
 
-$sql = "SELECT * FROM survey_mhs";
+$sql = "SELECT jawaban1, jawaban2, jawaban3, jawaban4, jawaban5, jawaban6, jawaban7, jawaban8 FROM survey_mhs";
 $resultMhs = mysqli_query($conn, $sql);
 ?>
 <style>
@@ -52,8 +52,8 @@ $resultMhs = mysqli_query($conn, $sql);
     var dataDs = <?php echo json_encode($resultDs->fetch_all(MYSQLI_ASSOC)); ?>;
 
     // Inisialisasi array untuk menyimpan data jawaban
-    var jawabanMhs = [0, 0, 0, 0, 0, 0, 0, 0];
-    var jawabanDs = [0, 0, 0, 0, 0, 0, 0, 0];
+    var jawabanMhs = [0, 0, 0];
+    var jawabanDs = [0, 0, 0];
 
     // Menghitung jumlah jawaban untuk setiap pertanyaan dari survey mahasiswa
     for (var i = 0; i < dataMhs.length; i++) {
