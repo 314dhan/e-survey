@@ -2,10 +2,10 @@
 require "../../config/Connection.php";
 $pageTitle = "admin";
 require "../header.php";
-$sql = "SELECT * FROM survey_ds";
+$sql = "SELECT jawaban1, jawaban2, jawaban3, jawaban4, jawaban5, jawaban6, jawaban7, jawaban8 FROM survey_ds";
 $resultDs = mysqli_query($conn, $sql);
 
-$sql = "SELECT * FROM survey_mhs";
+$sql = "SELECT jawaban1, jawaban2, jawaban3, jawaban4, jawaban5, jawaban6, jawaban7, jawaban8 FROM survey_mhs";
 $resultMhs = mysqli_query($conn, $sql);
 ?>
 <style>
@@ -16,31 +16,146 @@ $resultMhs = mysqli_query($conn, $sql);
         margin-right: 20px;
     }
 </style>
-<div class="chart-container">
-    <canvas id="chart1"></canvas>
+<div class="container" style="text-align: center;">
+    <h1 class="text-center">Survey Mahasiswa</h1>
+    <div class="row">
+        <div class="col-md-6 col-lg-3">
+            <div class="card">
+                <div class="card-body">
+                    <div class="chart-label">Pertanyaan 1</div>
+                    <canvas id="chart1"></canvas>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+            <div class="card">
+                <div class="card-body">
+                    <div class="chart-label">Pertanyaan 2</div>
+                    <canvas id="chart2"></canvas>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+            <div class="card">
+                <div class="card-body">
+                    <div class="chart-label">Pertanyaan 3</div>
+                    <canvas id="chart3"></canvas>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+            <div class="card">
+                <div class="card-body">
+                    <div class="chart-label">Pertanyaan 4</div>
+                    <canvas id="chart4"></canvas>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+            <div class="card">
+                <div class="card-body">
+                    <div class="chart-label">Pertanyaan 5</div>
+                    <canvas id="chart5"></canvas>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+            <div class="card">
+                <div class="card-body">
+                    <div class="chart-label">Pertanyaan 6</div>
+                    <canvas id="chart6"></canvas>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+            <div class="card">
+                <div class="card-body">
+                    <div class="chart-label">Pertanyaan 7</div>
+                    <canvas id="chart7"></canvas>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+            <div class="card">
+                <div class="card-body">
+                    <div class="chart-label">Pertanyaan 8</div>
+                    <canvas id="chart8"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <h1 class="text-center">Survey Dosen</h1>
+    <div class="row">
+        <div class="col-md-6 col-lg-3">
+            <div class="card">
+                <div class="card-body">
+                    <div class="chart-label">Pertanyaan 1</div>
+                    <canvas id="chart9"></canvas>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+            <div class="card">
+                <div class="card-body">
+                    <div class="chart-label">Pertanyaan 2</div>
+                    <canvas id="chart10"></canvas>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+            <div class="card">
+                <div class="card-body">
+                    <div class="chart-label">Pertanyaan 3</div>
+                    <canvas id="chart11"></canvas>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+            <div class="card">
+                <div class="card-body">
+                    <div class="chart-label">Pertanyaan 4</div>
+                    <canvas id="chart12"></canvas>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+            <div class="card">
+                <div class="card-body">
+                    <div class="chart-label">Pertanyaan 5</div>
+                    <canvas id="chart13"></canvas>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+            <div class="card">
+                <div class="card-body">
+                    <div class="chart-label">Pertanyaan 6</div>
+                    <canvas id="chart14"></canvas>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+            <div class="card">
+                <div class="card-body">
+                    <div class="chart-label">Pertanyaan 7</div>
+                    <canvas id="chart15"></canvas>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+            <div class="card">
+                <div class="card-body">
+                    <div class="chart-label">Pertanyaan 8</div>
+                    <canvas id="chart16"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a href="admin.php" class="btn btn-primary mt-2">Kembali</a>
 </div>
-<div class="chart-container">
-    <canvas id="chart2"></canvas>
-</div>
-<div class="chart-container">
-    <canvas id="chart3"></canvas>
-</div>
-<div class="chart-container">
-    <canvas id="chart4"></canvas>
-</div>
-<div class="chart-container">
-    <canvas id="chart5"></canvas>
-</div>
-<div class="chart-container">
-    <canvas id="chart6"></canvas>
-</div>
-<div class="chart-container">
-    <canvas id="chart7"></canvas>
-</div>
-<div class="chart-container">
-    <canvas id="chart8"></canvas>
-</div>
-<a href="admin.php" class="btn btn-primary">Kembali</a>
+
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
@@ -52,20 +167,40 @@ $resultMhs = mysqli_query($conn, $sql);
     var dataDs = <?php echo json_encode($resultDs->fetch_all(MYSQLI_ASSOC)); ?>;
 
     // Inisialisasi array untuk menyimpan data jawaban
-    var jawabanMhs = [0, 0, 0, 0, 0, 0, 0, 0];
-    var jawabanDs = [0, 0, 0, 0, 0, 0, 0, 0];
+    var jawabanMhs = [
+        [0, 0, 0],
+        [0, 0, 0],
+        [0, 0, 0],
+        [0, 0, 0],
+        [0, 0, 0],
+        [0, 0, 0],
+        [0, 0, 0],
+        [0, 0, 0]
+    ];
+    var jawabanDs = [
+        [0, 0, 0],
+        [0, 0, 0],
+        [0, 0, 0],
+        [0, 0, 0],
+        [0, 0, 0],
+        [0, 0, 0],
+        [0, 0, 0],
+        [0, 0, 0]
+    ];
 
     // Menghitung jumlah jawaban untuk setiap pertanyaan dari survey mahasiswa
     for (var i = 0; i < dataMhs.length; i++) {
         for (var j = 1; j <= 8; j++) {
-            jawabanMhs[j - 1] += parseInt(dataMhs[i]['jawaban' + j]);
+            var answer = parseInt(dataMhs[i]['jawaban' + j]);
+            jawabanMhs[j - 1][answer - 1]++;
         }
     }
 
     // Menghitung jumlah jawaban untuk setiap pertanyaan dari survey dosen
     for (var i = 0; i < dataDs.length; i++) {
         for (var j = 1; j <= 8; j++) {
-            jawabanDs[j - 1] += parseInt(dataDs[i]['jawaban' + j]);
+            var answer = parseInt(dataDs[i]['jawaban' + j]);
+            jawabanDs[j - 1][answer - 1]++;
         }
     }
 
@@ -75,66 +210,63 @@ $resultMhs = mysqli_query($conn, $sql);
         labels.push("Pertanyaan " + i);
     }
 
+
     // Inisialisasi array data untuk chart
     var dataMhsChart = jawabanMhs;
     var dataDsChart = jawabanDs;
 
-    var surveyDataMhs = {
-        labels: labels,
-        datasets: [{
-            data: dataMhsChart,
-            backgroundColor: ["#FF6384", "#36A2EB", "#FFCE56", "#4BC0C0", "#9966FF", "#FF9F40", "#63FF84", "#C0C0C0"]
-        }]
-    };
-
-    var surveyDataDs = {
-        labels: labels,
-        datasets: [{
-            data: dataDsChart,
-            backgroundColor: ["#FF6384", "#36A2EB", "#FFCE56", "#4BC0C0", "#9966FF", "#FF9F40", "#63FF84", "#C0C0C0"]
-        }]
-    };
-
     // Inisialisasi chart untuk setiap pertanyaan dari survey mahasiswa
-    surveyDataMhs.labels.forEach(function (question, index) {
-        var chartId = "chart" + (index + 1);
+    for (var i = 0; i < dataMhsChart.length; i++) {
+        var chartId = "chart" + (i + 1);
         var ctx = document.getElementById(chartId).getContext("2d");
         var myChart = new Chart(ctx, {
             type: "pie", // Menggunakan pie chart
             data: {
-                labels: [question],
-                datasets: surveyDataMhs.datasets
+                labels: ["Kurang", "Baik", "Sangat Baik"],
+                datasets: [{
+                    data: dataMhsChart[i],
+                    backgroundColor: ["#FF6384", "#36A2EB", "#FFCE56"]
+                }]
             },
             options: {
                 maintainAspectRatio: false,
                 responsive: false,
-                legend: { display: false }, // Menyembunyikan legenda
+                legend: {
+                    display: false
+                }, // Menyembunyikan legenda
                 width: 200, // Lebar chart
                 height: 200 // Tinggi chart
             }
         });
-    });
+    }
+
 
     // Inisialisasi chart untuk setiap pertanyaan dari survey dosen
-    surveyDataDs.labels.forEach(function (question, index) {
-        var chartId = "chart" + (index + 1);
+    for (var i = 0; i < dataDsChart.length; i++) {
+        var chartId = "chart" + (i + 9); // Penomoran chart dimulai dari 9
         var ctx = document.getElementById(chartId).getContext("2d");
         var myChart = new Chart(ctx, {
             type: "pie", // Menggunakan pie chart
             data: {
-                labels: [question],
-                datasets: surveyDataDs.datasets
+                labels: ["Kurang", "Baik", "Sangat Baik"],
+                datasets: [{
+                    data: dataDsChart[i],
+                    backgroundColor: ["#FF6384", "#36A2EB", "#FFCE56"]
+                }]
             },
             options: {
                 maintainAspectRatio: false,
                 responsive: false,
-                legend: { display: false }, // Menyembunyikan legenda
+                legend: {
+                    display: false
+                }, // Menyembunyikan legenda
                 width: 200, // Lebar chart
                 height: 200 // Tinggi chart
             }
         });
-    });
+    }
 </script>
-<?php 
+
+<?php
 
 require "../footer.php";

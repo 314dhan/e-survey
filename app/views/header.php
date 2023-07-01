@@ -1,9 +1,4 @@
-<?php
-// File: config.php
-
-// Tentukan path dasar proyek
-define('BASE_URL', 'http://localhost/presentasi/');
-?>
+<?php define('BASE_URL', 'http://localhost/presentasi/'); ?>
 
 <!DOCTYPE html>
 <html>

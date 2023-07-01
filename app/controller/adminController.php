@@ -31,30 +31,16 @@ if(isset($_POST['login'])){
         } else {
             // Jika password tidak cocok, tampilkan pesan error
             $error = "Password salah!";
-            echo $error;
+            echo "<script>
+            alert('$error');
+            history.back();
+            </script>";
         }
+    }else{
+        $error = "Username salah!";
+            echo "<script>
+            alert('$error');
+            history.back();
+            </script>";
     }
 }
-    // if(mysqli_num_rows($resultAdmin) === 1){
-    //     $row = mysqli_fetch_assoc($resultAdmin);
-    //     $stored_password = $row['password'];
-
-    //     // Memeriksa kecocokan password
-    //     if(password_verify($password, $stored_password)){
-    //         // Jika password cocok, set session dan redirect ke halaman mahasiswa
-    //         setcookie("user_role", $_SESSION['role'], time() + (86400 * 30), "/"); // Cookie berlaku selama 30 hari
-    //         session_start();
-    //         $_SESSION['loggedin'] = true;
-    //         $_SESSION['email'] = $email;
-    //         $_SESSION['role'] = 'mahasiswa';
-    //         $_SESSION['nama'] = $row['nama'];
-
-    //         header("Location: ../views/admin/admin.php");
-    //         exit;
-    //     } else {
-    //         // Jika password tidak cocok, tampilkan pesan error
-    //         $error = "Password salah!";
-    //         echo $error;
-    //     }
-    // }
-// }

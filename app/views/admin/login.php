@@ -1,11 +1,11 @@
 <?php
-error_reporting(E_ALL);
-session_start();
+error_reporting(E_ALL); //menjelaskan error
+session_start(); //memulai sesi
 
 // Cek apakah pengguna sudah login menggunakan session
 if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true){
     // Jika pengguna sudah login, redirect ke halaman yang sesuai
-    if($_SESSION['role'] === 'mahasiswa'){
+    if($_SESSION['role'] === 'admin'){
         header("Location: mahasiswa/mahasiswa.php");
         exit;
     } elseif($_SESSION['role'] === 'dosen'){
@@ -31,7 +31,7 @@ require "../header.php";
                     <h2 class="text-center">Admin Login</h2>
                     <form method="POST" action="../../controller/adminController.php">
                         <div class="mb-3">
-                            <label for="username" class="form-label">Email:</label>
+                            <label for="username" class="form-label">Username:</label>
                             <input type="username" id="username" name="username" class="form-control" autocomplete="off" required>
                         </div>
                         <div class="mb-3">

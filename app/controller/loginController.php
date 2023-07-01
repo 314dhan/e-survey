@@ -42,7 +42,11 @@ if(isset($_POST['login'])){
         } else {
             // Jika password tidak cocok, tampilkan pesan error
             $error = "Password salah!";
-            echo $error;
+            echo "<script>
+            alert('<?php echo $error; ?>');
+            history.back();
+            </script>";
+            // header("Location: ../views/mahasiswa/login.php");
         }
     }
     // Memeriksa apakah pengguna ditemukan sebagai dosen
@@ -65,11 +69,19 @@ if(isset($_POST['login'])){
         } else {
             // Jika password tidak cocok, tampilkan pesan error
             $error = "Password salah!";
-            echo $error;
+            echo "<script>
+            alert('$error');
+            history.back();
+            </script>";
+            // header("Location: ../views/mahasiswa/login.php");
         }
     } else {
         // Jika email tidak ditemukan di kedua tabel, tampilkan pesan error
         $error = "Email tidak terdaftar!";
-        echo $error;
+        echo "<script>
+            alert('$error');
+            history.back();
+            </script>";
+        // header("Location: ../views/mahasiswa/login.php");
     }
 }

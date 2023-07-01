@@ -9,10 +9,23 @@ $resultDs = mysqli_query($conn, $sql);
 
 $sql = "SELECT * FROM survey_mhs";
 $resultMhs = mysqli_query($conn, $sql);
+function getJawabanTeks($nilai)
+{
+    switch ($nilai) {
+        case 1:
+            return "Kurang";
+        case 2:
+            return "Baik";
+        case 3:
+            return "Sangat Baik";
+        default:
+            return "tidak ada";
+    }
+}
 ?>
 <div class='container' style='text-align: center;'>
 
-    <h2>Data Survey Dosen</h2>
+    <h1>Data Survey Dosen</h1>
     <table class="table table-bordered table-striped">
         <thead class="thead-dark">
             <tr>
@@ -34,14 +47,14 @@ $resultMhs = mysqli_query($conn, $sql);
             echo "<tr>";
             echo "<td>$no</td>";
             echo "<td>" . $row['nama'] . "</td>";
-            echo "<td>" . $row['jawaban1'] . "</td>";
-            echo "<td>" . $row['jawaban2'] . "</td>";
-            echo "<td>" . $row['jawaban3'] . "</td>";
-            echo "<td>" . $row['jawaban4'] . "</td>";
-            echo "<td>" . $row['jawaban5'] . "</td>";
-            echo "<td>" . $row['jawaban6'] . "</td>";
-            echo "<td>" . $row['jawaban7'] . "</td>";
-            echo "<td>" . $row['jawaban8'] . "</td>";
+            echo "<td>" . getJawabanTeks($row['jawaban1']) . "</td>";
+            echo "<td>" . getJawabanTeks($row['jawaban2']) . "</td>";
+            echo "<td>" . getJawabanTeks($row['jawaban3']) . "</td>";
+            echo "<td>" . getJawabanTeks($row['jawaban4']) . "</td>";
+            echo "<td>" . getJawabanTeks($row['jawaban5']) . "</td>";
+            echo "<td>" . getJawabanTeks($row['jawaban6']) . "</td>";
+            echo "<td>" . getJawabanTeks($row['jawaban7']) . "</td>";
+            echo "<td>" . getJawabanTeks($row['jawaban8']) . "</td>";
             echo "</tr>";
             $no++;
         }
@@ -70,14 +83,14 @@ $resultMhs = mysqli_query($conn, $sql);
                 echo "<tr>";
                 echo "<td>$no</td>";
                 echo "<td>" . $row['nama'] . "</td>";
-                echo "<td>" . $row['jawaban1'] . "</td>";
-                echo "<td>" . $row['jawaban2'] . "</td>";
-                echo "<td>" . $row['jawaban3'] . "</td>";
-                echo "<td>" . $row['jawaban4'] . "</td>";
-                echo "<td>" . $row['jawaban5'] . "</td>";
-                echo "<td>" . $row['jawaban6'] . "</td>";
-                echo "<td>" . $row['jawaban7'] . "</td>";
-                echo "<td>" . $row['jawaban8'] . "</td>";
+                echo "<td>" . getJawabanTeks($row['jawaban1']) . "</td>";
+                echo "<td>" . getJawabanTeks($row['jawaban2']) . "</td>";
+                echo "<td>" . getJawabanTeks($row['jawaban3']) . "</td>";
+                echo "<td>" . getJawabanTeks($row['jawaban4']) . "</td>";
+                echo "<td>" . getJawabanTeks($row['jawaban5']) . "</td>";
+                echo "<td>" . getJawabanTeks($row['jawaban6']) . "</td>";
+                echo "<td>" . getJawabanTeks($row['jawaban7']) . "</td>";
+                echo "<td>" . getJawabanTeks($row['jawaban8']) . "</td>";
                 echo "</tr>";
                 $no++;
             }

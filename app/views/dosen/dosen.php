@@ -38,17 +38,16 @@ require "../navbar.php";
 <h3>Pertanyaan Survei</h3>
 <form action="../../controller/surveyControllerDs.php" method="post">
         <div class="container" style="text-align: center;">
-        
-            <table class="table table-bordered">
-                <tr>
-                    <th>no</th>
-                    <th>soal</th>
-                    <th>sangat baik</th>
-                    <th>cukup baik</th>
-                    <th>baik</th>
-                    <th>kurang</th>
-                    <th>sangat kurang</th>
-                </tr>
+            <table class="table table-bordered table-striped">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>no</th>
+                        <th>soal</th>
+                        <th>Sangat Kurang</th>
+                        <th>Cukup</th>
+                        <th>Sangat Baik</th>
+                    </tr>
+                </thead>
                 <tr>
                 <input type="hidden" name="nama" value="<?= $dosen ?>">
                 </tr>
@@ -58,8 +57,6 @@ require "../navbar.php";
                     <td><input type="radio" name="jawaban1" value="1"></td>
                     <td><input type="radio" name="jawaban1" value="2"></td>
                     <td><input type="radio" name="jawaban1" value="3"></td>
-                    <td><input type="radio" name="jawaban1" value="4"></td>
-                    <td><input type="radio" name="jawaban1" value="5"></td>
                 </tr>
                 <tr>
                     <td>2</td>
@@ -67,8 +64,6 @@ require "../navbar.php";
                     <td><input type="radio" name="jawaban2" value="1"></td>
                     <td><input type="radio" name="jawaban2" value="2"></td>
                     <td><input type="radio" name="jawaban2" value="3"></td>
-                    <td><input type="radio" name="jawaban2" value="4"></td>
-                    <td><input type="radio" name="jawaban2" value="5"></td>
                 </tr>
                 <tr>
                     <td>3</td>
@@ -76,8 +71,6 @@ require "../navbar.php";
                     <td><input type="radio" name="jawaban3" value="1"></td>
                     <td><input type="radio" name="jawaban3" value="2"></td>
                     <td><input type="radio" name="jawaban3" value="3"></td>
-                    <td><input type="radio" name="jawaban3" value="4"></td>
-                    <td><input type="radio" name="jawaban3" value="5"></td>
                 </tr>
                 <tr>
                     <td>4</td>
@@ -85,8 +78,6 @@ require "../navbar.php";
                     <td><input type="radio" name="jawaban4" value="1"></td>
                     <td><input type="radio" name="jawaban4" value="2"></td>
                     <td><input type="radio" name="jawaban4" value="3"></td>
-                    <td><input type="radio" name="jawaban4" value="4"></td>
-                    <td><input type="radio" name="jawaban4" value="5"></td>
                 </tr>
                 <tr>
                     <td>5</td>
@@ -94,8 +85,6 @@ require "../navbar.php";
                     <td><input type="radio" name="jawaban5" value="1"></td>
                     <td><input type="radio" name="jawaban5" value="2"></td>
                     <td><input type="radio" name="jawaban5" value="3"></td>
-                    <td><input type="radio" name="jawaban5" value="4"></td>
-                    <td><input type="radio" name="jawaban5" value="5"></td>
                 </tr>
                 <tr>
                     <td>6</td>
@@ -103,8 +92,6 @@ require "../navbar.php";
                     <td><input type="radio" name="jawaban6" value="1"></td>
                     <td><input type="radio" name="jawaban6" value="2"></td>
                     <td><input type="radio" name="jawaban6" value="3"></td>
-                    <td><input type="radio" name="jawaban6" value="4"></td>
-                    <td><input type="radio" name="jawaban6" value="5"></td>
                 </tr>
                 <tr>
                     <td>7</td>
@@ -112,8 +99,6 @@ require "../navbar.php";
                     <td><input type="radio" name="jawaban7" value="1"></td>
                     <td><input type="radio" name="jawaban7" value="2"></td>
                     <td><input type="radio" name="jawaban7" value="3"></td>
-                    <td><input type="radio" name="jawaban7" value="4"></td>
-                    <td><input type="radio" name="jawaban7" value="5"></td>
                 </tr>
                 <tr>
                     <td>8</td>
@@ -121,8 +106,6 @@ require "../navbar.php";
                     <td><input type="radio" name="jawaban8" value="1"></td>
                     <td><input type="radio" name="jawaban8" value="2"></td>
                     <td><input type="radio" name="jawaban8" value="3"></td>
-                    <td><input type="radio" name="jawaban8" value="4"></td>
-                    <td><input type="radio" name="jawaban8" value="5"></td>
                 </tr>
                 <!-- <tr>
                     <td>9</td>
