@@ -8,9 +8,6 @@ if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true){
     if($_SESSION['role'] === 'admin'){
         header("Location: mahasiswa/mahasiswa.php");
         exit;
-    } elseif($_SESSION['role'] === 'dosen'){
-        header("Location: dosen/dosen.php");
-        exit;
     }
 }
 

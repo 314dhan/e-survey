@@ -108,24 +108,6 @@ require "../navbar.php";
                     <td><input type="radio" name="jawaban8" value="2"></td>
                     <td><input type="radio" name="jawaban8" value="3"></td>
                 </tr>
-                <!-- <tr>
-                    <td>9</td>
-                    <td><p>Seberapa baik kampus ini mendorong dan mendukung partisipasi mahasiswa dalam kegiatan sosial dan kemahasiswaan?</p></td>
-                    <td><input type="radio" name="jawaban9" value="Sangat Buruk"></td>
-                    <td><input type="radio" name="jawaban9" value="Buruk"></td>
-                    <td><input type="radio" name="jawaban9" value="Cukup"></td>
-                    <td><input type="radio" name="jawaban9" value="Baik"></td>
-                    <td><input type="radio" name="jawaban9" value="Sangat Baik"></td>
-                </tr>
-                <tr>
-                    <td>10</td>
-                    <td><p>Bagaimana tingkat kepuasan Anda terhadap suasana akademik dan lingkungan belajar di kampus ini?</p></td>
-                    <td><input type="radio" name="jawaban10" value="Sangat Buruk"></td>
-                    <td><input type="radio" name="jawaban10" value="Buruk"></td>
-                    <td><input type="radio" name="jawaban10" value="Cukup"></td>
-                    <td><input type="radio" name="jawaban10" value="Baik"></td>
-                    <td><input type="radio" name="jawaban10" value="Sangat Baik"></td>
-                </tr> -->
             </table>
         </div>
             <input class="btn btn-success" type="submit" name="submit" value="Kirim Survei">

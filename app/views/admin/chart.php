@@ -1,7 +1,17 @@
 <?php
+session_start();
+
+// Verifikasi session untuk memastikan pengguna telah login
+if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true || $_SESSION['role'] !== 'admin') {
+  // Jika pengguna tidak memiliki session yang valid atau bukan admin, redirect ke halaman login
+  header("Location: login.php");
+  exit;
+}
+
 require "../../config/Connection.php";
 $pageTitle = "admin";
-require "../header.php";
+require "../navbar.php";
+
 $sql = "SELECT jawaban1, jawaban2, jawaban3, jawaban4, jawaban5, jawaban6, jawaban7, jawaban8 FROM survey_ds";
 $resultDs = mysqli_query($conn, $sql);
 
@@ -17,142 +27,38 @@ $resultMhs = mysqli_query($conn, $sql);
     }
 </style>
 <div class="container" style="text-align: center;">
-    <h1 class="text-center">Survey Mahasiswa</h1>
-    <div class="row">
-        <div class="col-md-6 col-lg-3">
-            <div class="card">
-                <div class="card-body">
-                    <div class="chart-label">Pertanyaan 1</div>
-                    <canvas id="chart1"></canvas>
-                </div>
-            </div>
+  <div class="container">
+  <h1 class="text-center">Survey Mahasiswa</h1>
+  <div class="row">
+    <?php for ($i = 1; $i <= 8; $i++) { ?>
+      <div class="col-md-6 col-lg-3">
+        <div class="card">
+          <div class="card-body">
+            <div class="chart-label">Pertanyaan <?php echo $i; ?></div>
+            <canvas id="chart<?php echo $i; ?>"></canvas>
+          </div>
         </div>
-        <div class="col-md-6 col-lg-3">
-            <div class="card">
-                <div class="card-body">
-                    <div class="chart-label">Pertanyaan 2</div>
-                    <canvas id="chart2"></canvas>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6 col-lg-3">
-            <div class="card">
-                <div class="card-body">
-                    <div class="chart-label">Pertanyaan 3</div>
-                    <canvas id="chart3"></canvas>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6 col-lg-3">
-            <div class="card">
-                <div class="card-body">
-                    <div class="chart-label">Pertanyaan 4</div>
-                    <canvas id="chart4"></canvas>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6 col-lg-3">
-            <div class="card">
-                <div class="card-body">
-                    <div class="chart-label">Pertanyaan 5</div>
-                    <canvas id="chart5"></canvas>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6 col-lg-3">
-            <div class="card">
-                <div class="card-body">
-                    <div class="chart-label">Pertanyaan 6</div>
-                    <canvas id="chart6"></canvas>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6 col-lg-3">
-            <div class="card">
-                <div class="card-body">
-                    <div class="chart-label">Pertanyaan 7</div>
-                    <canvas id="chart7"></canvas>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6 col-lg-3">
-            <div class="card">
-                <div class="card-body">
-                    <div class="chart-label">Pertanyaan 8</div>
-                    <canvas id="chart8"></canvas>
-                </div>
-            </div>
-        </div>
-    </div>
+      </div>
+    <?php } ?>
+  </div>
+</div>
 
+<div class="container">
+  <h1 class="text-center">Survey Dosen</h1>
+  <div class="row">
+    <?php for ($i = 9; $i <= 16; $i++) { ?>
+      <div class="col-md-6 col-lg-3">
+        <div class="card">
+          <div class="card-body">
+            <div class="chart-label">Pertanyaan <?php echo $i; ?></div>
+            <canvas id="chart<?php echo $i; ?>"></canvas>
+          </div>
+        </div>
+      </div>
+    <?php } ?>
+  </div>
+</div>
 
-    <h1 class="text-center">Survey Dosen</h1>
-    <div class="row">
-        <div class="col-md-6 col-lg-3">
-            <div class="card">
-                <div class="card-body">
-                    <div class="chart-label">Pertanyaan 1</div>
-                    <canvas id="chart9"></canvas>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6 col-lg-3">
-            <div class="card">
-                <div class="card-body">
-                    <div class="chart-label">Pertanyaan 2</div>
-                    <canvas id="chart10"></canvas>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6 col-lg-3">
-            <div class="card">
-                <div class="card-body">
-                    <div class="chart-label">Pertanyaan 3</div>
-                    <canvas id="chart11"></canvas>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6 col-lg-3">
-            <div class="card">
-                <div class="card-body">
-                    <div class="chart-label">Pertanyaan 4</div>
-                    <canvas id="chart12"></canvas>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6 col-lg-3">
-            <div class="card">
-                <div class="card-body">
-                    <div class="chart-label">Pertanyaan 5</div>
-                    <canvas id="chart13"></canvas>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6 col-lg-3">
-            <div class="card">
-                <div class="card-body">
-                    <div class="chart-label">Pertanyaan 6</div>
-                    <canvas id="chart14"></canvas>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6 col-lg-3">
-            <div class="card">
-                <div class="card-body">
-                    <div class="chart-label">Pertanyaan 7</div>
-                    <canvas id="chart15"></canvas>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6 col-lg-3">
-            <div class="card">
-                <div class="card-body">
-                    <div class="chart-label">Pertanyaan 8</div>
-                    <canvas id="chart16"></canvas>
-                </div>
-            </div>
-        </div>
-    </div>
     <a href="admin.php" class="btn btn-primary mt-2">Kembali</a>
 </div>
 
