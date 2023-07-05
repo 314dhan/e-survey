@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 29, 2023 at 06:04 AM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.2.4
+-- Generation Time: Jul 04, 2023 at 04:44 AM
+-- Server version: 10.4.27-MariaDB
+-- PHP Version: 8.1.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -59,7 +59,9 @@ CREATE TABLE `ds` (
 
 INSERT INTO `ds` (`id_dosen`, `nama`, `email`, `password`) VALUES
 (1, 'akip', 'akip@gmail.com', '$2y$10$iZvZ735BLRgJ7j3pef4oCOlt4V7MAepW2Ygu.fNnZeMJYc4EYPv0a'),
-(2, 'doni', 'doni@gmail.com', '$2y$10$cG0xtXVcIjK6DVQKhZCCL.uJgEDuUdKzfSqwgnMjnollhidqv3Ip6');
+(2, 'doni', 'doni@gmail.com', '$2y$10$cG0xtXVcIjK6DVQKhZCCL.uJgEDuUdKzfSqwgnMjnollhidqv3Ip6'),
+(3, 'nurkholis', 'olis@gmail.com', '$2y$10$mCPZzQutVXLAEARSC1kbH.KPgzqDWEGyz/.d.bSLeonGxZmKA7Xv2'),
+(4, 'kahfi', 'kahfi@gmail.com', '$2y$10$uc8FW8hJJYFLKEwNMrL.8.4CJtty3ZCNcFO.8flilCYA/3d.391vu');
 
 -- --------------------------------------------------------
 
@@ -109,7 +111,10 @@ CREATE TABLE `survey_ds` (
 --
 
 INSERT INTO `survey_ds` (`no`, `nama`, `jawaban1`, `jawaban2`, `jawaban3`, `jawaban4`, `jawaban5`, `jawaban6`, `jawaban7`, `jawaban8`) VALUES
-(1, 'akip', '1', '2', '3', '4', '5', '4', '3', '2');
+(1, 'akip', '1', '2', '3', '3', '2', '3', '1', '2'),
+(2, 'doni', '2', '2', '1', '2', '3', '2', '3', '2'),
+(3, 'nurkholis', '3', '2', '3', '1', '2', '2', '2', '3'),
+(4, 'kahfi', '2', '3', '3', '3', '2', '2', '3', '2');
 
 -- --------------------------------------------------------
 
@@ -135,8 +140,9 @@ CREATE TABLE `survey_mhs` (
 --
 
 INSERT INTO `survey_mhs` (`no`, `nama`, `jawaban1`, `jawaban2`, `jawaban3`, `jawaban4`, `jawaban5`, `jawaban6`, `jawaban7`, `jawaban8`) VALUES
-(1, 'adri fachrezi', '1', '2', '3', '4', '5', '4', '3', '2'),
-(2, 'kris', '3', '3', '4', '4', '3', '2', '2', '2');
+(1, 'adri fachrezi', '1', '2', '3', '2', '3', '1', '3', '2'),
+(2, 'kris', '3', '3', '2', '1', '3', '2', '2', '2'),
+(3, 'willy', '2', '2', '2', '2', '1', '3', '2', '1');
 
 --
 -- Indexes for dumped tables
@@ -190,7 +196,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `ds`
 --
 ALTER TABLE `ds`
-  MODIFY `id_dosen` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_dosen` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `mhs`
@@ -202,13 +208,13 @@ ALTER TABLE `mhs`
 -- AUTO_INCREMENT for table `survey_ds`
 --
 ALTER TABLE `survey_ds`
-  MODIFY `no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `survey_mhs`
 --
 ALTER TABLE `survey_mhs`
-  MODIFY `no` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `no` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Constraints for dumped tables

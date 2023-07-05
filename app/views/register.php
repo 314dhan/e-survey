@@ -10,7 +10,7 @@ require "header.php";
                     <form action="../controller/registerController.php" method="POST">
                         <div class="form-group">
                             <label for="email">Email:</label>
-                            <input type="email" class="form-control" name="email" required>
+                            <input type="email" class="form-control" name="email" autofocus required>
                         </div>
                         <div class="form-group">
                             <label for="nama">Nama:</label>

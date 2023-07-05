@@ -39,7 +39,7 @@ if(isset($_SESSION['error_message'])){
                     <form method="POST" action="../controller/loginController.php">
                         <div class="mb-3">
                             <label for="email" class="form-label">Email:</label>
-                            <input type="email" id="email" name="email" class="form-control" autocomplete="off" required>
+                            <input type="email" id="email" name="email" class="form-control" autocomplete="off" autofocus required>
                         </div>
                         <div class="mb-3">
                             <label for="password" class="form-label">Password:</label>

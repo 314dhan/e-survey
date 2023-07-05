@@ -29,7 +29,7 @@ require "../header.php";
                     <form method="POST" action="../../controller/adminController.php">
                         <div class="mb-3">
                             <label for="username" class="form-label">Username:</label>
-                            <input type="username" id="username" name="username" class="form-control" autocomplete="off" required>
+                            <input type="username" id="username" name="username" class="form-control" autocomplete="off" autofocus required>
                         </div>
                         <div class="mb-3">
                             <label for="password" class="form-label">Password:</label>

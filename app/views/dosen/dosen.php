@@ -29,6 +29,9 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
 $role = $_SESSION['role'];
 $dosen = $_SESSION['nama'];
 
+$sql = "SELECT * FROM pertanyaan_ds";
+$result = mysqli_query($conn, $sql);
+
 $pageTitle = "Dosen";
 require "../navbar.php";
 ?>
@@ -51,78 +54,28 @@ require "../navbar.php";
                 <tr>
                     <input type="hidden" name="nama" value="<?= $dosen ?>">
                 </tr>
-                <tr>
-                    <td>1</td>
-                    <td>
-                        <p>Seberapa puas Anda dengan dukungan yang diberikan oleh institusi terkait fasilitas dan sumber daya yang memfasilitasi kegiatan mengajar Anda?</p>
-                    </td>
-                    <td><input type="radio" name="jawaban1" value="1"></td>
-                    <td><input type="radio" name="jawaban1" value="2"></td>
-                    <td><input type="radio" name="jawaban1" value="3"></td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>
-                        <p>Bagaimana penilaian Anda terhadap tingkat keefektifan metode pengajaran yang Anda gunakan dalam memfasilitasi pemahaman dan pembelajaran mahasiswa?</p>
-                    </td>
-                    <td><input type="radio" name="jawaban2" value="1"></td>
-                    <td><input type="radio" name="jawaban2" value="2"></td>
-                    <td><input type="radio" name="jawaban2" value="3"></td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>
-                        <p>Seberapa baik Anda dalam memberikan umpan balik yang konstruktif kepada mahasiswa mengenai kinerja dan kemajuan akademik mereka?</p>
-                    </td>
-                    <td><input type="radio" name="jawaban3" value="1"></td>
-                    <td><input type="radio" name="jawaban3" value="2"></td>
-                    <td><input type="radio" name="jawaban3" value="3"></td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td>
-                        <p>Sejauh mana Anda melibatkan mahasiswa dalam proses pembelajaran, seperti diskusi kelas, tugas kelompok, atau proyek kolaboratif?</p>
-                    </td>
-                    <td><input type="radio" name="jawaban4" value="1"></td>
-                    <td><input type="radio" name="jawaban4" value="2"></td>
-                    <td><input type="radio" name="jawaban4" value="3"></td>
-                </tr>
-                <tr>
-                    <td>5</td>
-                    <td>
-                        <p>Bagaimana penilaian Anda terhadap kemampuan mahasiswa dalam mengaplikasikan pengetahuan yang mereka peroleh dalam konteks dunia nyata?</p>
-                    </td>
-                    <td><input type="radio" name="jawaban5" value="1"></td>
-                    <td><input type="radio" name="jawaban5" value="2"></td>
-                    <td><input type="radio" name="jawaban5" value="3"></td>
-                </tr>
-                <tr>
-                    <td>6</td>
-                    <td>
-                        <p>Seberapa baik Anda dalam memfasilitasi diskusi terbuka dan interaktif di kelas guna mendorong partisipasi aktif mahasiswa?</p>
-                    </td>
-                    <td><input type="radio" name="jawaban6" value="1"></td>
-                    <td><input type="radio" name="jawaban6" value="2"></td>
-                    <td><input type="radio" name="jawaban6" value="3"></td>
-                </tr>
-                <tr>
-                    <td>7</td>
-                    <td>
-                        <p>Bagaimana penilaian Anda terhadap kualitas bahan ajar yang Anda sediakan, seperti buku teks, materi kuliah, atau sumber referensi lainnya?</p>
-                    </td>
-                    <td><input type="radio" name="jawaban7" value="1"></td>
-                    <td><input type="radio" name="jawaban7" value="2"></td>
-                    <td><input type="radio" name="jawaban7" value="3"></td>
-                </tr>
-                <tr>
-                    <td>8</td>
-                    <td>
-                        <p>Sejauh mana Anda memberikan kesempatan bagi mahasiswa untuk mengembangkan keterampilan praktis yang relevan dengan bidang studi mereka?</p>
-                    </td>
-                    <td><input type="radio" name="jawaban8" value="1"></td>
-                    <td><input type="radio" name="jawaban8" value="2"></td>
-                    <td><input type="radio" name="jawaban8" value="3"></td>
-                </tr>
+                <?php
+                $no = 1;
+                if (mysqli_num_rows($result) > 0) {
+                    // Looping untuk menampilkan data dalam bentuk HTML
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        $pertanyaan = $row['pertanyaan'];
+
+                        echo '<tr>';
+                        echo '<td>' . $no . '</td>';
+                        echo '<td>';
+                        echo '<p>' . $pertanyaan . '</p>';
+                        echo '</td>';
+                        echo '<td><input type="radio" name="jawaban' . $no . '" value="1"></td>';
+                        echo '<td><input type="radio" name="jawaban' . $no . '" value="2"></td>';
+                        echo '<td><input type="radio" name="jawaban' . $no . '" value="3"></td>';
+                        echo '</tr>';
+                        $no++;
+                    }
+                } else {
+                    echo 'Tidak ada data yang ditemukan.';
+                }
+                ?>
             </table>
         </div>
         <input class="btn btn-success" type="submit" name="submit" value="Kirim Survei">

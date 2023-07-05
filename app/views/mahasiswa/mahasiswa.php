@@ -28,6 +28,9 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
 $role = $_SESSION['role'];
 $nama = $_SESSION['nama'];
 
+$sql = "SELECT * FROM pertanyaan_mhs";
+$result = mysqli_query($conn, $sql);
+
 $pageTitle = "Survey Mahasiswa";
 $studentName = "<h2>Selamat Datang, $nama!</h2>";
 require "../navbar.php";
@@ -53,129 +56,79 @@ require "../navbar.php";
                 <tr>
                     <input type="hidden" name="nama" value="<?= $nama ?>">
                 </tr>
-                <tr>
-                    <td>1</td>
-                    <td>
-                        <p>Seberapa puas Anda dengan fasilitas kampus?</p>
-                    </td>
-                    <td><input type="radio" name="jawaban1" value="1"></td>
-                    <td><input type="radio" name="jawaban1" value="2"></td>
-                    <td><input type="radio" name="jawaban1" value="3"></td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>
-                        <p>Bagaimana penilaian Anda terhadap kualitas pengajaran yang diberikan oleh dosen di kampus ini?</p>
-                    </td>
-                    <td><input type="radio" name="jawaban2" value="1"></td>
-                    <td><input type="radio" name="jawaban2" value="2"></td>
-                    <td><input type="radio" name="jawaban2" value="3"></td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>
-                        <p>Sejauh mana kampus ini menyediakan fasilitas yang memadai untuk mendukung kegiatan belajar-mengajar?</p>
-                    </td>
-                    <td><input type="radio" name="jawaban3" value="1"></td>
-                    <td><input type="radio" name="jawaban3" value="2"></td>
-                    <td><input type="radio" name="jawaban3" value="3"></td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td>
-                        <p>Bagaimana tingkat kepuasan Anda terhadap layanan administrasi dan pelayanan mahasiswa di kampus ini?</p>
-                    </td>
-                    <td><input type="radio" name="jawaban4" value="1"></td>
-                    <td><input type="radio" name="jawaban4" value="2"></td>
-                    <td><input type="radio" name="jawaban4" value="3"></td>
-                </tr>
-                <tr>
-                    <td>5</td>
-                    <td>
-                        <p>Seberapa efektif sistem penilaian dan evaluasi di kampus ini dalam mengukur kemajuan dan pencapaian mahasiswa?</p>
-                    </td>
-                    <td><input type="radio" name="jawaban5" value="1"></td>
-                    <td><input type="radio" name="jawaban5" value="2"></td>
-                    <td><input type="radio" name="jawaban5" value="3"></td>
-                </tr>
-                <tr>
-                    <td>6</td>
-                    <td>
-                        <p>Seberapa baik kampus ini memberikan kesempatan bagi mahasiswa untuk mengembangkan potensi dan minat di luar kegiatan akademik?</p>
-                    </td>
-                    <td><input type="radio" name="jawaban6" value="1"></td>
-                    <td><input type="radio" name="jawaban6" value="2"></td>
-                    <td><input type="radio" name="jawaban6" value="3"></td>
-                </tr>
-                <tr>
-                    <td>7</td>
-                    <td>
-                        <p>Bagaimana penilaian Anda terhadap kualitas fasilitas perpustakaan yang tersedia di kampus ini?</p>
-                    </td>
-                    <td><input type="radio" name="jawaban7" value="1"></td>
-                    <td><input type="radio" name="jawaban7" value="2"></td>
-                    <td><input type="radio" name="jawaban7" value="3"></td>
-                </tr>
-                <tr>
-                    <td>8</td>
-                    <td>
-                        <p>Seberapa efektif kampus ini dalam memberikan dukungan dan bimbingan karier bagi mahasiswa?</p>
-                    </td>
-                    <td><input type="radio" name="jawaban8" value="1"></td>
-                    <td><input type="radio" name="jawaban8" value="2"></td>
-                    <td><input type="radio" name="jawaban8" value="3"></td>
-                </tr>
+                <?php
+                $no = 1;
+                if (mysqli_num_rows($result) > 0) {
+                    // Looping untuk menampilkan data dalam bentuk HTML
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        $pertanyaan = $row['pertanyaan'];
+
+                        echo '<tr>';
+                        echo '<td>' . $no . '</td>';
+                        echo '<td>';
+                        echo '<p>' . $pertanyaan . '</p>';
+                        echo '</td>';
+                        echo '<td><input type="radio" name="jawaban' . $no . '" value="1"></td>';
+                        echo '<td><input type="radio" name="jawaban' . $no . '" value="2"></td>';
+                        echo '<td><input type="radio" name="jawaban' . $no . '" value="3"></td>';
+                        echo '</tr>';
+                        $no++;
+                    }
+                } else {
+                    echo 'Tidak ada data yang ditemukan.';
+                }
+                ?>
             </table>
         </div>
         <input class="btn btn-success" type="submit" name="submit" value="Kirim Survei">
     </form>
 </div>
 <script>
-        $(document).ready(function() {
-            $('form').submit(function(event) {
-                event.preventDefault(); // Mencegah pengiriman form
+    $(document).ready(function() {
+        $('form').submit(function(event) {
+            event.preventDefault(); // Mencegah pengiriman form
 
-                // Dapatkan data form
-                var formData = $(this).serialize();
+            // Dapatkan data form
+            var formData = $(this).serialize();
 
-                // Kirim permintaan AJAX
-                $.ajax({
-                    url: '../../controller/surveyControllerMhs.php',
-                    type: 'POST',
-                    data: formData,
-                    dataType: 'json',
-                    success: function(response) {
-                        if (response.status === 'success') {
-                            // Tampilkan pesan keberhasilan menggunakan SweetAlert
-                            Swal.fire({
-                                icon: 'success',
-                                title: 'Berhasil',
-                                text: 'Survey Berhasil Terkirim, Terima Kasih!',
-                            })
-                            // .then(function() {
-                            //     // Redirect ke halaman dosen.php setelah menekan tombol OK pada SweetAlert
-                            //     window.location.href = '../dosen/dosen.php';
-                            // });
-                        } else {
-                            // Tampilkan pesan kesalahan jika terjadi error
-                            Swal.fire({
-                                icon: 'error',
-                                title: 'Oops...',
-                                text: response.message,
-                            });
-                        }
-                    },
-                    error: function() {
-                        // Tampilkan pesan kesalahan jika permintaan gagal
+            // Kirim permintaan AJAX
+            $.ajax({
+                url: '../../controller/surveyControllerMhs.php',
+                type: 'POST',
+                data: formData,
+                dataType: 'json',
+                success: function(response) {
+                    if (response.status === 'success') {
+                        // Tampilkan pesan keberhasilan menggunakan SweetAlert
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Berhasil',
+                            text: 'Survey Berhasil Terkirim, Terima Kasih!',
+                        })
+                        // .then(function() {
+                        //     // Redirect ke halaman dosen.php setelah menekan tombol OK pada SweetAlert
+                        //     window.location.href = '../dosen/dosen.php';
+                        // });
+                    } else {
+                        // Tampilkan pesan kesalahan jika terjadi error
                         Swal.fire({
                             icon: 'error',
                             title: 'Oops...',
-                            text: 'Terjadi kesalahan!',
+                            text: response.message,
                         });
                     }
-                });
+                },
+                error: function() {
+                    // Tampilkan pesan kesalahan jika permintaan gagal
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Terjadi kesalahan!',
+                    });
+                }
             });
         });
+    });
 </script>
 <?php
 require "../footer.php";
