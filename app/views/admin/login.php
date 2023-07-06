@@ -1,10 +1,8 @@
 <?php
-error_reporting(E_ALL); //menjelaskan error
-session_start(); //memulai sesi
+error_reporting(E_ALL);
+session_start();
 
-// Cek apakah pengguna sudah login menggunakan session
 if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true){
-    // Jika pengguna sudah login, redirect ke halaman yang sesuai
     if($_SESSION['role'] === 'admin'){
         header("Location: mahasiswa/mahasiswa.php");
         exit;

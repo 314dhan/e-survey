@@ -1,9 +1,7 @@
 <?php 
 session_start();
 
-    // Verifikasi session untuk memastikan pengguna telah login
 if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true || $_SESSION['role'] !== 'admin') {
-        // Jika pengguna tidak memiliki session yang valid atau bukan admin, redirect ke halaman login
     header("Location: login.php");
     exit;
 }

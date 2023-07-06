@@ -7,59 +7,25 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true || $_SESSION
   header("Location: login.php");
   exit;
 }
+$pageTitle = "admin";
 
 require "../../config/Connection.php";
-$pageTitle = "admin";
 require "../navbar.php";
 
-$sql = "SELECT jawaban1, jawaban2, jawaban3, jawaban4, jawaban5, jawaban6, jawaban7, jawaban8 FROM survey_ds";
-$resultDs = mysqli_query($conn, $sql);
-
-$sql = "SELECT jawaban1, jawaban2, jawaban3, jawaban4, jawaban5, jawaban6, jawaban7, jawaban8 FROM survey_mhs";
-$resultMhs = mysqli_query($conn, $sql);
+$queryDs = "SELECT jawaban1, jawaban2, jawaban3, jawaban4, jawaban5, jawaban6, jawaban7, jawaban8 FROM survey_ds";
+$queryMhs = "SELECT jawaban1, jawaban2, jawaban3, jawaban4, jawaban5, jawaban6, jawaban7, jawaban8 FROM survey_mhs";
 
 $sqlDs = "SELECT pertanyaan FROM pertanyaan_ds";
-$pertnyaanDs = mysqli_query($conn, $sqlDs);
-$rowDs = mysqli_fetch_all($pertnyaanDs, MYSQLI_ASSOC);
-
 $sqlMhs = "SELECT pertanyaan FROM pertanyaan_mhs";
+
+$resultDs = mysqli_query($conn, $queryDs);
+$resultMhs = mysqli_query($conn, $queryMhs);
+$pertnyaanDs = mysqli_query($conn, $sqlDs);
 $pertnyaanMhs = mysqli_query($conn, $sqlMhs);
+$rowDs = mysqli_fetch_all($pertnyaanDs, MYSQLI_ASSOC);
 $rowMhs = mysqli_fetch_all($pertnyaanMhs, MYSQLI_ASSOC);
-
-// $queryMhs = "SELECT pertanyaan FROM pertanyaan_mhs";
-// $pertanyaanMhs = mysqli_query($conn, $queryMhs);
-
-// $queryDs = "SELECT pertanyaan FROM pertanyaan_ds";
-// $pertanyaanDs = mysqli_query($conn, $queryDs);
-
 ?>
-<style>
-  .chart-container {
-    display: inline-block;
-    width: 300px;
-    height: 300px;
-    margin-right: 20px;
-  }
-</style>
 <div class="container" style="text-align: center;">
-  <div class="container">
-    <h1 class="text-center">Survey Mahasiswa</h1>
-    <div class="row">
-      <?php for ($i = 0; $i < 8; $i++) {
-        $pertanyaan = $rowMhs[$i]['pertanyaan'];
-      ?>
-        <div class="col-md-6 col-lg-3">
-          <div class="card mt-3">
-            <div class="card-body">
-              <p><?php echo $pertanyaan; ?></p>
-              <canvas id="chart<?php echo $i + 1; ?>"></canvas>
-            </div>
-          </div>
-        </div>
-      <?php } ?>
-    </div>
-  </div>
-
   <div class="container">
     <h1 class="text-center">Survey Dosen</h1>
     <div class="row">
@@ -78,12 +44,29 @@ $rowMhs = mysqli_fetch_all($pertnyaanMhs, MYSQLI_ASSOC);
     </div>
   </div>
 
-
+  <div class="container">
+    <h1 class="text-center">Survey Mahasiswa</h1>
+    <div class="row">
+      <?php for ($i = 0; $i < 8; $i++) {
+        $pertanyaan = $rowMhs[$i]['pertanyaan'];
+      ?>
+        <div class="col-md-6 col-lg-3">
+          <div class="card mt-3">
+            <div class="card-body">
+              <p><?php echo $pertanyaan; ?></p>
+              <canvas id="chart<?php echo $i + 1; ?>"></canvas>
+            </div>
+          </div>
+        </div>
+      <?php } ?>
+    </div>
+  </div>
+  
   <a href="admin.php" class="btn btn-primary mt-2">Kembali</a>
 </div>
 
 
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 
 <script>
   // Query untuk mengambil data dari tabel survey_mhs
@@ -193,6 +176,4 @@ $rowMhs = mysqli_fetch_all($pertnyaanMhs, MYSQLI_ASSOC);
   }
 </script>
 
-<?php
-
-require "../footer.php";
+<?php require "../footer.php";

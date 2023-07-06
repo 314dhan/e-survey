@@ -1,14 +1,12 @@
 <?php
 require "../../config/Connection.php";
 
-// Query untuk mengambil data dari tabel pertanyaan_ds
 $sqlDosen = "SELECT * FROM pertanyaan_ds";
-$resultDosen = mysqli_query($conn, $sqlDosen);
-
-// Query untuk mengambil data dari tabel pertanyaan_mhs
 $sqlMahasiswa = "SELECT * FROM pertanyaan_mhs";
+$resultDosen = mysqli_query($conn, $sqlDosen);
 $resultMahasiswa = mysqli_query($conn, $sqlMahasiswa);
 $pageTitle = "Pertanyaan";
+
 require "../navbar.php";
 ?>
 <div class="container" style="text-align: center;">
@@ -28,7 +26,7 @@ require "../navbar.php";
                 echo '<tr>';
                 echo '<td>' . $no . '</td>';
                 echo '<td>' . $pertanyaan . '</td>';
-                echo '<td><a class="btn btn-primary" href="update.php"> update </a></td>';
+                echo '<td><a class="btn btn-primary" href="updateDs.php?pertanyaan=' . urlencode($pertanyaan) . '">Update</a></td>';
                 echo '</tr>';
             }
         } else {
@@ -55,7 +53,7 @@ require "../navbar.php";
                 echo '<tr>';
                 echo '<td>' . $no . '</td>';
                 echo '<td>' . $pertanyaan . '</td>';
-                echo '<td><a class="btn btn-primary" href="update.php"> Update </a></td>';
+                echo '<td><a class="btn btn-primary" href="updateMhs.php?pertanyaan=' . urlencode($pertanyaan) . '">Update</a></td>';
                 echo '</tr>';
             }
         } else {

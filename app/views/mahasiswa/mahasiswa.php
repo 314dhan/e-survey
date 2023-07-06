@@ -17,9 +17,7 @@ if (isset($_COOKIE['user_role'])) {
         exit;
     }
 }
-// Cek apakah pengguna sudah login menggunakan session
 if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
-    // Jika pengguna belum login, redirect ke halaman login
     header("Location: login.php");
     exit;
 }
@@ -32,7 +30,6 @@ $sql = "SELECT * FROM pertanyaan_mhs";
 $result = mysqli_query($conn, $sql);
 
 $pageTitle = "Survey Mahasiswa";
-$studentName = "<h2>Selamat Datang, $nama!</h2>";
 require "../navbar.php";
 ?>
 <div class="container">

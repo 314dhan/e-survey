@@ -5,7 +5,6 @@ ini_set('display_errors', 1);
 
 require "../../config/connection.php";
 
-// Verifikasi cookie
 if (isset($_COOKIE['user_role'])) {
     $user_role = $_COOKIE['user_role'];
 
@@ -18,9 +17,7 @@ if (isset($_COOKIE['user_role'])) {
     }
 }
 
-// Cek apakah pengguna sudah login menggunakan session
 if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
-    // Jika pengguna belum login, redirect ke halaman login
     header("Location: login.php");
     exit;
 }

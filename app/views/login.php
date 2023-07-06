@@ -54,7 +54,7 @@ if(isset($_SESSION['error_message'])){
                         </div>
                     </form>
                     <div class="d-grid mt-3">
-                        <a href="admin/login.php"><p>Login Sebagai Admin?</p></a>
+                        <a href="admin/login.php"><p>Masuk Sebagai Admin?</p></a>
                     </div>
                 </div>
             </div>
