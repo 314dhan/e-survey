@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <label class="form-label" for="pertanyaanUpdate">Perbaharui</label>
                 <input class="form-control" type="text" name="pertanyaanUpdate">
             </div>
-            <button type="submit" class="btn btn-primary">Update</button>
+            <button type="submit" class="btn btn-primary">Update</button><br><br>
             <a href="pertanyaan.php" class="btn btn-secondary">Kembali</a>
         </form>
     </div>

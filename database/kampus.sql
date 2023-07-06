@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 05, 2023 at 07:48 PM
+-- Generation Time: Jul 06, 2023 at 06:36 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.1.12
 
@@ -87,7 +87,8 @@ INSERT INTO `mhs` (`id_mahasiswa`, `email`, `nama`, `password`) VALUES
 (3, 'kris@gmail.com', 'kris', '$2y$10$c7wBzhKUCx2nab3UUOBUTOkJBBD8Wb0xXwCGqELrHd2zvW3baKodK'),
 (4, 'willy@gmail.com', 'willy', '$2y$10$NCuidlEisas5fqVtKuC1.ukQFwDJjYKNNiqeWye2zZWoy7BKF8roG'),
 (5, 'prima@gmail.co', 'primana', '$2y$10$Toq7BWJR0tRw544I73uKb.665qKPFbRBy3YPfdnsvL..LsIu91bMe'),
-(6, 'danang@mail.com', 'danang', '$2y$10$M1D91W45TKHa.atLb6QPA.KU3kxBx5pLScYLObwsBsa/5coRlh7hO');
+(6, 'danang@mail.com', 'danang', '$2y$10$M1D91W45TKHa.atLb6QPA.KU3kxBx5pLScYLObwsBsa/5coRlh7hO'),
+(7, 'daniel@mail.com', 'daniel', '$2y$10$4ggXdl/DAEPTYYKtWcKqOOVGPlWXrdpYPMkK5ODgdiNe2a8JE5W.6');
 
 -- --------------------------------------------------------
 
@@ -105,10 +106,10 @@ CREATE TABLE `pertanyaan_ds` (
 --
 
 INSERT INTO `pertanyaan_ds` (`no`, `pertanyaan`) VALUES
-(1, 'Seberapa puas Anda dengan dukungan yang diberikan oleh institusi terkait fasilitas dan sumber daya yang memfasilitasi kegiatan mengajar Anda?'),
+(1, 'kok tanya saya'),
 (2, 'Bagaimana penilaian Anda terhadap tingkat keefektifan metode pengajaran yang Anda gunakan dalam memfasilitasi pemahaman dan pembelajaran mahasiswa?'),
 (3, 'Seberapa baik Anda dalam memberikan umpan balik yang konstruktif kepada mahasiswa mengenai kinerja dan kemajuan akademik mereka?'),
-(4, 'Sejauh mana Anda melibatkan mahasiswa dalam proses pembelajaran, seperti diskusi kelas, tugas kelompok, atau proyek kolaboratif?'),
+(4, 'kembali'),
 (5, 'Bagaimana penilaian Anda terhadap kemampuan mahasiswa dalam mengaplikasikan pengetahuan yang mereka peroleh dalam konteks dunia nyata?'),
 (6, 'Seberapa baik Anda dalam memfasilitasi diskusi terbuka dan interaktif di kelas guna mendorong partisipasi aktif mahasiswa?'),
 (7, 'Bagaimana penilaian Anda terhadap kualitas bahan ajar yang Anda sediakan, seperti buku teks, materi kuliah, atau sumber referensi lainnya?'),
@@ -196,7 +197,8 @@ INSERT INTO `survey_mhs` (`no`, `nama`, `jawaban1`, `jawaban2`, `jawaban3`, `jaw
 (1, 'adri fachrezi', '1', '2', '3', '2', '3', '1', '3', '2'),
 (2, 'kris', '3', '3', '2', '1', '3', '2', '2', '2'),
 (3, 'willy', '2', '2', '2', '2', '1', '3', '2', '1'),
-(8, 'danang', '2', '3', '2', '1', '2', '2', '3', '1');
+(8, 'danang', '2', '3', '2', '1', '2', '2', '3', '1'),
+(9, 'daniel', '3', '2', '1', '2', '2', '3', '1', '2');
 
 --
 -- Indexes for dumped tables
@@ -268,7 +270,7 @@ ALTER TABLE `ds`
 -- AUTO_INCREMENT for table `mhs`
 --
 ALTER TABLE `mhs`
-  MODIFY `id_mahasiswa` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_mahasiswa` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `pertanyaan_ds`
@@ -286,13 +288,13 @@ ALTER TABLE `pertanyaan_mhs`
 -- AUTO_INCREMENT for table `survey_ds`
 --
 ALTER TABLE `survey_ds`
-  MODIFY `no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `survey_mhs`
 --
 ALTER TABLE `survey_mhs`
-  MODIFY `no` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `no` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- Constraints for dumped tables
