@@ -1,9 +1,7 @@
 <?php
 session_start();
 
-// Verifikasi session untuk memastikan pengguna telah login
 if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true || $_SESSION['role'] !== 'admin') {
-  // Jika pengguna tidak memiliki session yang valid atau bukan admin, redirect ke halaman login
   header("Location: login.php");
   exit;
 }
@@ -131,7 +129,7 @@ $rowMhs = mysqli_fetch_all($pertnyaanMhs, MYSQLI_ASSOC);
     var myChart = new Chart(ctx, {
       type: "pie", // Menggunakan pie chart
       data: {
-        labels: ["Kurang", "Baik", "Sangat Baik"],
+        labels: ["Kurang", "Cukup", "Sangat Baik"],
         datasets: [{
           data: dataMhsChart[i],
           backgroundColor: ["#FF6384", "#36A2EB", "#FFCE56"]
@@ -157,7 +155,7 @@ $rowMhs = mysqli_fetch_all($pertnyaanMhs, MYSQLI_ASSOC);
     var myChart = new Chart(ctx, {
       type: "pie", // Menggunakan pie chart
       data: {
-        labels: ["Kurang", "Baik", "Sangat Baik"],
+        labels: ["Kurang", "Cukup", "Sangat Baik"],
         datasets: [{
           data: dataDsChart[i],
           backgroundColor: ["#FF6384", "#36A2EB", "#FFCE56"]

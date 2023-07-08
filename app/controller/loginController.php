@@ -36,7 +36,7 @@ if(isset($_POST['login'])){
         } else {
             $error = "Password salah!";
             echo "<script>
-            alert('<?php echo $error; ?>');
+            alert('$error');
             history.back();
             </script>";
         }
