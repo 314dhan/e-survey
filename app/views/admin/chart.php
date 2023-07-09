@@ -5,7 +5,8 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true || $_SESSION
   header("Location: login.php");
   exit;
 }
-$pageTitle = "admin";
+$pageTitle = "Chart";
+$navName = "E-Survey Kampus Universitas Serang Raya";
 
 require "../../config/Connection.php";
 require "../navbar.php";
@@ -25,7 +26,7 @@ $rowMhs = mysqli_fetch_all($pertnyaanMhs, MYSQLI_ASSOC);
 ?>
 <div class="container" style="text-align: center;">
   <div class="container">
-    <h1 class="text-center">Survey Dosen</h1>
+    <h1 class="text-center nama-user">Survey Dosen</h1>
     <div class="row">
       <?php for ($i = 0; $i < 8; $i++) {
         $pertanyaan = $rowDs[$i]['pertanyaan'];
@@ -43,7 +44,7 @@ $rowMhs = mysqli_fetch_all($pertnyaanMhs, MYSQLI_ASSOC);
   </div>
 
   <div class="container">
-    <h1 class="text-center">Survey Mahasiswa</h1>
+    <h1 class="text-center nama-user">Survey Mahasiswa</h1>
     <div class="row">
       <?php for ($i = 0; $i < 8; $i++) {
         $pertanyaan = $rowMhs[$i]['pertanyaan'];
@@ -59,7 +60,7 @@ $rowMhs = mysqli_fetch_all($pertnyaanMhs, MYSQLI_ASSOC);
       <?php } ?>
     </div>
   </div>
-  
+
   <a href="admin.php" class="btn btn-primary mt-2">Kembali</a>
 </div>
 

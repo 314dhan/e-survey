@@ -7,6 +7,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true || $_SESSION
 }
 
 $pageTitle = "admin";
+$navName = "E-Survey Kampus Universitas Serang Raya";
 require "../navbar.php" ?>
 <div class="container mt-3 mb-3">
     <div class="row">
@@ -41,4 +42,3 @@ require "../navbar.php" ?>
         </div>
     </div>
 </div>
-<?php require "../footer.php" ?>

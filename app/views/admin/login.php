@@ -10,6 +10,7 @@ if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true){
 }
 
 $pageTitle = "Login Admin";
+$navName = "E-Survey Kampus Universitas Serang Raya";
 require "../header.php";
 ?>
 

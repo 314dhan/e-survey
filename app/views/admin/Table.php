@@ -1,4 +1,4 @@
-<?php 
+<?php
 session_start();
 
 if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true || $_SESSION['role'] !== 'admin') {
@@ -9,6 +9,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true || $_SESSION
 require "../../config/Connection.php";
 
 $pageTitle = "Table";
+$navName = "E-Survey Kampus Universitas Serang Raya";
 require "../navbar.php";
 
 $sql = "SELECT * FROM survey_ds";
@@ -32,7 +33,7 @@ function getJawabanTeks($nilai)
 ?>
 <div class='container' style='text-align: center;'>
 
-    <h1>Data Survey Dosen</h1>
+    <h1 class="nama-user">Data Survey Dosen</h1>
     <table class="table table-bordered table-striped">
         <thead class="thead-dark">
             <tr>
@@ -68,7 +69,7 @@ function getJawabanTeks($nilai)
         ?>
     </table>
 
-    <h1>Data Suvey Mahasiswa</h1>
+    <h1 class="nama-user">Data Suvey Mahasiswa</h1>
     <table class="table table-bordered table-striped">
         <thead>
             <tr>
@@ -85,23 +86,24 @@ function getJawabanTeks($nilai)
             </tr>
         </thead>
         <?php
-            $no = 1;
-            while ($row = mysqli_fetch_assoc($resultMhs)) {
-                echo "<tr>";
-                echo "<td>$no</td>";
-                echo "<td>" . $row['nama'] . "</td>";
-                echo "<td>" . getJawabanTeks($row['jawaban1']) . "</td>";
-                echo "<td>" . getJawabanTeks($row['jawaban2']) . "</td>";
-                echo "<td>" . getJawabanTeks($row['jawaban3']) . "</td>";
-                echo "<td>" . getJawabanTeks($row['jawaban4']) . "</td>";
-                echo "<td>" . getJawabanTeks($row['jawaban5']) . "</td>";
-                echo "<td>" . getJawabanTeks($row['jawaban6']) . "</td>";
-                echo "<td>" . getJawabanTeks($row['jawaban7']) . "</td>";
-                echo "<td>" . getJawabanTeks($row['jawaban8']) . "</td>";
-                echo "</tr>";
-                $no++;
-            }
+        $no = 1;
+        while ($row = mysqli_fetch_assoc($resultMhs)) {
+            echo "<tr>";
+            echo "<td>$no</td>";
+            echo "<td>" . $row['nama'] . "</td>";
+            echo "<td>" . getJawabanTeks($row['jawaban1']) . "</td>";
+            echo "<td>" . getJawabanTeks($row['jawaban2']) . "</td>";
+            echo "<td>" . getJawabanTeks($row['jawaban3']) . "</td>";
+            echo "<td>" . getJawabanTeks($row['jawaban4']) . "</td>";
+            echo "<td>" . getJawabanTeks($row['jawaban5']) . "</td>";
+            echo "<td>" . getJawabanTeks($row['jawaban6']) . "</td>";
+            echo "<td>" . getJawabanTeks($row['jawaban7']) . "</td>";
+            echo "<td>" . getJawabanTeks($row['jawaban8']) . "</td>";
+            echo "</tr>";
+            $no++;
+        }
         ?>
     </table>
     <a href="admin.php" class="btn btn-primary">Kembali</a>
 </div>
+<?php require "../footer.php";

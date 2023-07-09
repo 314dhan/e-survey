@@ -29,13 +29,14 @@ $dosen = $_SESSION['nama'];
 $sql = "SELECT * FROM pertanyaan_ds";
 $result = mysqli_query($conn, $sql);
 
-$pageTitle = "Dosen";
+$pageTitle = "Survey Dosen";
+$navName = "Dosen";
 require "../navbar.php";
 ?>
 <div class="container">
-    <h2 style="text-align: center;">Selamat datang, <?= $dosen; ?>!</h2>
+    <h2 class="nama-user" style="text-align: center;">Selamat datang, <?= $dosen; ?>!</h2>
 
-    <h3>Pertanyaan Survei</h3>
+    <h3 class="pertanyaan">Pertanyaan Survei</h3>
     <form action="../../controller/surveyControllerDs.php" method="post">
         <div class="container" style="text-align: center;">
             <table class="table table-bordered table-striped">

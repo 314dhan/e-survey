@@ -1,9 +1,22 @@
 body {
-    background-color: #bbb4b4;
+    background-image: url("../picture/uns.jpg");
+    background-size: 70px 70px;
 }
 
 a{
     text-decoration: none;
+}
+
+.nama-user{
+    color: #ffffff;
+}
+
+.pertanyaan{
+    color: #ffffff;
+}
+
+footer{
+    background-color: rgb(163, 163, 163);
 }
 
 .login-container {

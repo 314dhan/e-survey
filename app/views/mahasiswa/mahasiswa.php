@@ -30,14 +30,15 @@ $sql = "SELECT * FROM pertanyaan_mhs";
 $result = mysqli_query($conn, $sql);
 
 $pageTitle = "Survey Mahasiswa";
+$navName = "Mahasiswa";
 require "../navbar.php";
 ?>
 <div class="container">
 
-    <h1 style="text-align: center;">Selamat datang, <?= $nama; ?>!</h4>
+    <h1 class="nama-user" style="text-align: center;">Selamat datang, <?= $nama; ?>!</h4>
     </h1>
 
-    <h3>Pertanyaan Survei</h3>
+    <h3 class="pertanyaan">Pertanyaan Survei</h3>
     <form action="../../controller/surveyControllerMhs.php" method="post">
         <div class="container" style="text-align: center;">
             <table class="table table-bordered table-striped">
