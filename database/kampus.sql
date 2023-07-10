@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 09, 2023 at 04:35 PM
+-- Generation Time: Jul 10, 2023 at 05:13 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.1.12
 
@@ -73,7 +73,8 @@ INSERT INTO `ds` (`id_dosen`, `nama`, `email`, `password`) VALUES
 (13, 'fitri', 'fitri@gmail.com', '$2y$10$CRRCRU2M9Jexkxo0e15h7OdyKNHz6ffHKWYu3k97UR.pCB8sUQAXO'),
 (14, 'hisyam', 'hisyam@gmail.com', '$2y$10$rJbOqLqDk5ycZiHVKjNBkeoLT09Dj5b/qInGG/TaHxIhwbKbJJqvy'),
 (15, 'david', 'david@gmail.com', '$2y$10$nG3QuuBz9SwM6pIMnql4qePHNaNR1apZLuXsOr5vB.gmdt7yPbFV2'),
-(16, 'reynaldi', 'reynaldi@mail.com', '$2y$10$kEAt0ijymi/n/c8AUa9AEOes3i1W.fGOph1rKNgPCmD7Wb7.46uMi');
+(16, 'reynaldi', 'reynaldi@mail.com', '$2y$10$kEAt0ijymi/n/c8AUa9AEOes3i1W.fGOph1rKNgPCmD7Wb7.46uMi'),
+(17, 'eli', 'eli@mail.com', '$2y$10$c9vbPJnAgVG6guu2DQe6F.jbivCln4QEnpd5CWjgWepf3ReYU47R.');
 
 -- --------------------------------------------------------
 
@@ -109,7 +110,8 @@ INSERT INTO `mhs` (`id_mahasiswa`, `email`, `nama`, `password`) VALUES
 (14, 'kevin@mail.com', 'kevin', '$2y$10$AqI2lXtU6wcL7HEvjcnule.0b5yCAaiatnTruK6l2V05HndL0uusK'),
 (15, 'lala@mail.com', 'lala', '$2y$10$IIB9emUdY/.M.2M8crRKwukPjmT77Fvyjbio8GWs6b4tBU98eWftq'),
 (16, 'leon@mail.com', 'leon', '$2y$10$kV0oCMRaaR3cOiSQOVlDGeOCvAYNSKGLQbwcDhwf4Ygo30.oY/lHe'),
-(17, 'okta@mail.com', 'okta', '$2y$10$ttaOdTIY75WP2r7fXZs0MeQmBlhF2RSXQPQ1DbUsGTAQtuWbGqAQu');
+(17, 'okta@mail.com', 'okta', '$2y$10$ttaOdTIY75WP2r7fXZs0MeQmBlhF2RSXQPQ1DbUsGTAQtuWbGqAQu'),
+(18, 'rola@mail.com', 'rola', '$2y$10$d58b8tffuNBNpFrOMwwuU.26SpnwxX5F8tz6LoHpPT0gqb9lI0ge.');
 
 -- --------------------------------------------------------
 
@@ -200,7 +202,8 @@ INSERT INTO `survey_ds` (`no`, `nama`, `jawaban1`, `jawaban2`, `jawaban3`, `jawa
 (37, 'fitri', '3', '2', '1', '2', '3', '2', '1', '2'),
 (38, 'hisyam', '1', '3', '1', '1', '3', '2', '3', '3'),
 (39, 'david', '2', '1', '3', '1', '3', '2', '3', '2'),
-(40, 'reynaldi', '2', '3', '3', '2', '1', '2', '3', '2');
+(40, 'reynaldi', '2', '3', '3', '2', '1', '2', '3', '2'),
+(42, 'eli', '3', '3', '2', '2', '2', '1', '2', '2');
 
 -- --------------------------------------------------------
 
@@ -242,7 +245,8 @@ INSERT INTO `survey_mhs` (`no`, `nama`, `jawaban1`, `jawaban2`, `jawaban3`, `jaw
 (45, 'rohmat', '1', '2', '1', '2', '3', '2', '1', '1'),
 (46, 'primana', '3', '2', '2', '3', '1', '2', '2', '2'),
 (47, 'leon', '1', '2', '3', '2', '2', '3', '1', '2'),
-(48, 'okta', '3', '1', '2', '2', '3', '2', '1', '1');
+(48, 'okta', '3', '1', '2', '2', '3', '2', '1', '1'),
+(49, 'rola', '3', '2', '2', '1', '2', '2', '3', '3');
 
 --
 -- Indexes for dumped tables
@@ -308,13 +312,13 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `ds`
 --
 ALTER TABLE `ds`
-  MODIFY `id_dosen` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id_dosen` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `mhs`
 --
 ALTER TABLE `mhs`
-  MODIFY `id_mahasiswa` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id_mahasiswa` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `pertanyaan_ds`
@@ -332,13 +336,13 @@ ALTER TABLE `pertanyaan_mhs`
 -- AUTO_INCREMENT for table `survey_ds`
 --
 ALTER TABLE `survey_ds`
-  MODIFY `no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT for table `survey_mhs`
 --
 ALTER TABLE `survey_mhs`
-  MODIFY `no` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+  MODIFY `no` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
 -- Constraints for dumped tables

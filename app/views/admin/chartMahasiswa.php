@@ -18,16 +18,19 @@ $pertnyaanMhs = mysqli_query($conn, $sqlMhs);
 $rowMhs = mysqli_fetch_all($pertnyaanMhs, MYSQLI_ASSOC);
 ?>
 <div class="container" style="text-align: center;">
-    <div class="container">
+    <div class="mt-3">
         <h1 class="text-center nama-user">Survey Mahasiswa</h1>
         <div class="row">
-            <?php for ($i = 0; $i < 8; $i++) {
+            <?php
+            $n = 0;
+            for ($i = 0; $i < 8; $i++) {
                 $pertanyaan = $rowMhs[$i]['pertanyaan'];
+                $n++;
             ?>
                 <div class="col-md-6 col-lg-3">
                     <div class="card mt-3">
                         <div class="card-body">
-                            <p><?php echo $pertanyaan; ?></p>
+                            <p><?php echo $n . ". " . $pertanyaan; ?></p>
                             <canvas id="chart<?php echo $i + 1; ?>"></canvas>
                         </div>
                     </div>
@@ -35,12 +38,13 @@ $rowMhs = mysqli_fetch_all($pertnyaanMhs, MYSQLI_ASSOC);
             <?php } ?>
         </div>
     </div>
-
+    <button class="btn btn-primary mt-2" onclick="toggleDonut()">Chart Donut</button><br>
     <a href="admin.php" class="btn btn-primary mt-2">Kembali</a>
 </div>
 <script>
     // Query untuk mengambil data dari tabel survey_mhs
     var dataMhs = <?php echo json_encode($resultMhs->fetch_all(MYSQLI_ASSOC)); ?>;
+    var charts = [];
 
     // Inisialisasi array untuk menyimpan data jawaban
     var jawabanMhs = [
@@ -53,7 +57,7 @@ $rowMhs = mysqli_fetch_all($pertnyaanMhs, MYSQLI_ASSOC);
         [0, 0, 0],
         [0, 0, 0]
     ];
-    
+
     // Menghitung jumlah jawaban untuk setiap pertanyaan dari survey mahasiswa
     for (var i = 0; i < dataMhs.length; i++) {
         for (var j = 1; j <= 8; j++) {
@@ -90,10 +94,23 @@ $rowMhs = mysqli_fetch_all($pertnyaanMhs, MYSQLI_ASSOC);
                 legend: {
                     display: false
                 }, // Menyembunyikan legenda
-                width: 200, // Lebar chart
-                height: 200 // Tinggi chart
+                width: 100, // Lebar chart
+                height: 100 // Tinggi chart
             }
         });
+        charts.push(myChart);
+    }
+
+    function toggleDonut() {
+        for (var i = 0; i < charts.length; i++) { // Loop untuk setiap objek chart di array charts
+            var chart = charts[i]; // Mendapatkan objek chart dari array
+            if (chart.config.type === "pie") { // Jika tipe chart adalah pie
+                chart.config.type = "doughnut"; // Ubah menjadi doughnut
+            } else { // Jika tipe chart bukan pie
+                chart.config.type = "pie"; // Ubah menjadi pie
+            }
+            chart.update(); // Perbarui chart
+        }
     }
 </script>
 <?php require "../footer.php";
