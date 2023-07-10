@@ -6,6 +6,7 @@
 <head>
     <meta charset="utf-8">
     <title><?= $pageTitle; ?></title>
+    <link rel="icon" type="image/x-icon" href="<?php echo BASE_URL; ?>public/picture/Unsera.png">
     <link rel="stylesheet" href="<?php echo BASE_URL; ?>public/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="<?php echo BASE_URL; ?>public/fontawesome/css/all.min.css">
     <link rel="stylesheet" href="<?php echo BASE_URL; ?>public/css/login.css">
