@@ -1,7 +1,6 @@
 @startuml
 
-actor "mahasiswa" as user
-
+actor "pengisi survey" as user
 node "web e-survey kampus"{
     node "Model" as model
     node "Controller" as controller
@@ -10,10 +9,10 @@ node "web e-survey kampus"{
 
 database "Mysql" as mysql
 
-user --> controller : 1
-controller --> model : 2
-controller --> view : 3
-controller --> mysql : 4
-controller --> user : 5
+user --> view : 1
+view --> controller: 2
+view --> model : 3
+view --> mysql : 4
+view --> user : 5
 
 @enduml
