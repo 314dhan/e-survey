@@ -71,7 +71,7 @@ require "../navbar.php";
             }
             ?>
         </table>
-        <a href="admin.php" class="btn btn-primary">Kembali</a>
+        <a href="admin.php" class="btn btn-primary tombol-pad">Kembali</a>
 </div>
 
 <?php require "../footer.php";

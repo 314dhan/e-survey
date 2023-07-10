@@ -16,7 +16,7 @@ require "../navbar.php" ?>
                 <div class="card-body">
                     <h5 class="card-title">Table Survey</h5>
                     <p class="card-text">Isi dari hasil survey berupa table.</p>
-                    <a href="Table.php" class="btn btn-primary">Klik</a>
+                    <a href="Table.php" class="btn btn-primary tombol-pad">Klik</a>
                 </div>
             </div>
         </div>
@@ -25,7 +25,7 @@ require "../navbar.php" ?>
                 <div class="card-body">
                     <h5 class="card-title">Chart Dosen</h5>
                     <p class="card-text">Berisi chart survey.</p>
-                    <a href="chartDosen.php" class="btn btn-primary">Klik</a>
+                    <a href="chartDosen.php" class="btn btn-primary tombol-pad">Klik</a>
                 </div>
             </div>
         </div>
@@ -36,7 +36,7 @@ require "../navbar.php" ?>
                 <div class="card-body">
                     <h5 class="card-title">Pertanyaan</h5>
                     <p class="card-text">Isi dari pertanyaan survey.</p>
-                    <a href="pertanyaan.php" class="btn btn-primary">Klik</a>
+                    <a href="pertanyaan.php" class="btn btn-primary tombol-pad">Klik</a>
                 </div>
             </div>
         </div>
@@ -45,7 +45,7 @@ require "../navbar.php" ?>
                 <div class="card-body">
                     <h5 class="card-title">Chart Mahasiswa</h5>
                     <p class="card-text">Isi dari pertanyaan survey.</p>
-                    <a href="chartMahasiswa.php" class="btn btn-primary">Klik</a>
+                    <a href="chartMahasiswa.php" class="btn btn-primary tombol-pad">Klik</a>
                 </div>
             </div>
         </div>

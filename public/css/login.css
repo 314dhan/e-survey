@@ -11,6 +11,11 @@ a{
     color: #ffffff;
 }
 
+.tombol-pad{
+    font-size: 20px;
+    padding: 10px 100px;
+}
+
 .pertanyaan{
     color: #ffffff;
 }

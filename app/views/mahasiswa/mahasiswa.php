@@ -30,12 +30,12 @@ $sql = "SELECT * FROM pertanyaan_mhs";
 $result = mysqli_query($conn, $sql);
 
 $pageTitle = "Survey Mahasiswa";
-$navName = "Mahasiswa";
+$navName = "MAHASISWA";
 require "../navbar.php";
 ?>
 <div class="container">
 
-    <h1 class="nama-user" style="text-align: center;">Selamat datang, <?= $nama; ?>!</h4>
+    <h1 class="nama-user" style="text-align: center;">Selamat datang, <br><?= $nama; ?>!</h4>
     </h1>
 
     <h3 class="pertanyaan">Pertanyaan Survei</h3>
@@ -78,7 +78,9 @@ require "../navbar.php";
                 ?>
             </table>
         </div>
-        <input class="btn btn-success" type="submit" name="submit" value="Kirim Survei">
+        <div class="container" style="text-align: center;">
+            <input class="btn btn-success tombol-pad" type="submit" name="submit" value="Kirim Survei">
+        </div>
     </form>
 </div>
 <script>
@@ -99,14 +101,14 @@ require "../navbar.php";
                     if (response.status === 'success') {
                         // Tampilkan pesan keberhasilan menggunakan SweetAlert
                         Swal.fire({
-                            icon: 'success',
-                            title: 'Berhasil',
-                            text: 'Survey Berhasil Terkirim, Terima Kasih!',
-                        })
-                        // .then(function() {
-                        //     // Redirect ke halaman dosen.php setelah menekan tombol OK pada SweetAlert
-                        //     window.location.href = '../dosen/dosen.php';
-                        // });
+                                icon: 'success',
+                                title: 'Berhasil',
+                                text: 'Survey Berhasil Terkirim, Terima Kasih! Tekan Ok untuk keluar',
+                            })
+                            .then(function() {
+                                // Redirect ke halaman dosen.php setelah menekan tombol OK pada SweetAlert
+                                window.location.href = '../../controller/logoutController.php';
+                            });
                     } else {
                         // Tampilkan pesan kesalahan jika terjadi error
                         Swal.fire({
@@ -121,7 +123,7 @@ require "../navbar.php";
                     Swal.fire({
                         icon: 'error',
                         title: 'Oops...',
-                        text: 'Terjadi kesalahan!',
+                        text: 'Terjadi kesalahan! Harap isi survei dengan benar',
                     });
                 }
             });

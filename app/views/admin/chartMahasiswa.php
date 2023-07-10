@@ -19,7 +19,7 @@ $rowMhs = mysqli_fetch_all($pertnyaanMhs, MYSQLI_ASSOC);
 ?>
 <div class="container" style="text-align: center;">
     <div class="mt-3">
-        <h1 class="text-center nama-user">Survey Mahasiswa</h1>
+        <h1 class="text-center nama-user">Survei Mahasiswa</h1>
         <div class="row">
             <?php
             $n = 0;
@@ -38,8 +38,8 @@ $rowMhs = mysqli_fetch_all($pertnyaanMhs, MYSQLI_ASSOC);
             <?php } ?>
         </div>
     </div>
-    <button class="btn btn-primary mt-2" onclick="toggleDonut()">Ubah Chart</button><br>
-    <a href="admin.php" class="btn btn-primary mt-2">Kembali</a>
+    <button class="btn btn-primary mt-3 tombol-pad" onclick="toggleDonut()">Ubah Chart</button>
+    <a href="admin.php" class="btn btn-primary mt-3 tombol-pad">Kembali</a>
 </div>
 <script>
     // Query untuk mengambil data dari tabel survey_mhs

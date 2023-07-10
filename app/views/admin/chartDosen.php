@@ -18,7 +18,7 @@ $pertnyaanDs = mysqli_query($conn, $sqlDs);
 $rowDs = mysqli_fetch_all($pertnyaanDs, MYSQLI_ASSOC);
 ?>
 <div class="container" style="text-align: center;">
-  <h1 class="text-center nama-user">Survey Dosen</h1>
+  <h1 class="text-center nama-user">Survei Dosen</h1>
   <div class="row">
     <?php
     $n = 0;
@@ -36,8 +36,8 @@ $rowDs = mysqli_fetch_all($pertnyaanDs, MYSQLI_ASSOC);
       </div>
     <?php } ?>
   </div>
-  <button class="btn btn-primary mt-2" onclick="toggleDonut()">Ubah Chart</button><br>
-  <a href="admin.php" class="btn btn-primary mt-2">Kembali</a>
+  <button class="btn btn-primary mt-1 tombol-pad" onclick="toggleDonut()">Ubah Chart</button>
+  <a href="admin.php" class="btn btn-primary mt-1 tombol-pad">Kembali</a>
 </div>
 <script>
   // Query untuk mengambil data dari tabel survey_ds

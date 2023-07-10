@@ -30,11 +30,11 @@ $sql = "SELECT * FROM pertanyaan_ds";
 $result = mysqli_query($conn, $sql);
 
 $pageTitle = "Survey Dosen";
-$navName = "Dosen";
+$navName = "DOSEN";
 require "../navbar.php";
 ?>
 <div class="container">
-    <h2 class="nama-user" style="text-align: center;">Selamat datang, <?= $dosen; ?>!</h2>
+    <h2 class="nama-user" style="text-align: center;">Selamat datang, <br><?= $dosen; ?>!</h2>
 
     <h3 class="pertanyaan">Pertanyaan Survei</h3>
     <form action="../../controller/surveyControllerDs.php" method="post">
@@ -76,7 +76,9 @@ require "../navbar.php";
                 ?>
             </table>
         </div>
-        <input class="btn btn-success" type="submit" name="submit" value="Kirim Survei">
+        <div class="container" style="text-align: center;">
+            <input class="btn btn-success tombol-pad" type="submit" name="submit" value="Kirim Survei">
+        </div>
     </form>
 </div>
 <script>
@@ -97,14 +99,14 @@ require "../navbar.php";
                     if (response.status === 'success') {
                         // Tampilkan pesan keberhasilan menggunakan SweetAlert
                         Swal.fire({
-                            icon: 'success',
-                            title: 'Berhasil',
-                            text: 'Survey Berhasil Terkirim, Terima Kasih!',
-                        })
-                        // .then(function() {
-                        //     // Redirect ke halaman dosen.php setelah menekan tombol OK pada SweetAlert
-                        //     window.location.href = '../dosen/dosen.php';
-                        // });
+                                icon: 'success',
+                                title: 'Berhasil',
+                                text: 'Survey Berhasil Terkirim, Terima Kasih! Tekan Ok untuk keluar',
+                            })
+                            .then(function() {
+                                // Redirect ke halaman dosen.php setelah menekan tombol OK pada SweetAlert
+                                window.location.href = '../../controller/logoutController.php';
+                            });
                     } else {
                         // Tampilkan pesan kesalahan jika terjadi error
                         Swal.fire({
@@ -119,7 +121,7 @@ require "../navbar.php";
                     Swal.fire({
                         icon: 'error',
                         title: 'Oops...',
-                        text: 'Terjadi kesalahan!',
+                        text: 'Terjadi kesalahan! Harap isi survei dengan benar',
                     });
                 }
             });

@@ -36,6 +36,7 @@ if(isset($_SESSION['error_message'])){
                         </script>
                     <?php } ?>
                     <h2 class="text-center">Form Login</h2>
+                    <h5 class="text-center">E-Survei Kampus UNSERA</h5>
                     <form method="POST" action="../controller/loginController.php">
                         <div class="mb-3">
                             <label for="email" class="form-label">Email:</label>

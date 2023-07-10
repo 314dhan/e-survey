@@ -33,7 +33,7 @@ function getJawabanTeks($nilai)
 ?>
 <div class='container' style='text-align: center;'>
 
-    <h1 class="nama-user">Data Survey Dosen</h1>
+    <h1 class="nama-user">Data Survei Dosen</h1>
     <table class="table table-bordered table-striped">
         <thead class="thead-dark">
             <tr>
@@ -69,7 +69,7 @@ function getJawabanTeks($nilai)
         ?>
     </table>
 
-    <h1 class="nama-user">Data Suvey Mahasiswa</h1>
+    <h1 class="nama-user">Data Survei Mahasiswa</h1>
     <table class="table table-bordered table-striped">
         <thead>
             <tr>
@@ -104,6 +104,6 @@ function getJawabanTeks($nilai)
         }
         ?>
     </table>
-    <a href="admin.php" class="btn btn-primary">Kembali</a>
+    <a href="admin.php" class="btn btn-primary tombol-pad">Kembali</a>
 </div>
 <?php require "../footer.php";

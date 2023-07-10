@@ -2,8 +2,8 @@
 error_reporting(E_ALL);
 session_start();
 
-if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true){
-    if($_SESSION['role'] === 'admin'){
+if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
+    if ($_SESSION['role'] === 'admin') {
         header("Location: mahasiswa/mahasiswa.php");
         exit;
     }
@@ -19,12 +19,13 @@ require "../header.php";
         <div class="row justify-content-center">
             <div class="col-md-6">
                 <div class="login-container">
-                        <?php if(isset($error)) { ?>
-                            <div class="alert alert-danger" role="alert">
-                                <?php echo $error; ?>
-                            </div>
-                        <?php } ?>
+                    <?php if (isset($error)) { ?>
+                        <div class="alert alert-danger" role="alert">
+                            <?php echo $error; ?>
+                        </div>
+                    <?php } ?>
                     <h2 class="text-center">Admin Login</h2>
+                    <h5 class="text-center">E-Survei Kampus UNSERA</h5>
                     <form method="POST" action="../../controller/adminController.php">
                         <div class="mb-3">
                             <label for="username" class="form-label">Username:</label>
@@ -47,5 +48,3 @@ require "../header.php";
     </div>
 
     <script src="bootstrap.min.js"></script>
-
-
