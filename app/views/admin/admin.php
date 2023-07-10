@@ -23,9 +23,9 @@ require "../navbar.php" ?>
         <div class="col-sm-6 adm">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Chart Survey</h5>
+                    <h5 class="card-title">Chart Dosen</h5>
                     <p class="card-text">Berisi chart survey.</p>
-                    <a href="chart.php" class="btn btn-primary">Klik</a>
+                    <a href="chartDosen.php" class="btn btn-primary">Klik</a>
                 </div>
             </div>
         </div>
@@ -37,6 +37,15 @@ require "../navbar.php" ?>
                     <h5 class="card-title">Pertanyaan</h5>
                     <p class="card-text">Isi dari pertanyaan survey.</p>
                     <a href="pertanyaan.php" class="btn btn-primary">Klik</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 adm">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Chart Mahasiswa</h5>
+                    <p class="card-text">Isi dari pertanyaan survey.</p>
+                    <a href="chartMahasiswa.php" class="btn btn-primary">Klik</a>
                 </div>
             </div>
         </div>
