@@ -38,7 +38,7 @@ $rowMhs = mysqli_fetch_all($pertnyaanMhs, MYSQLI_ASSOC);
             <?php } ?>
         </div>
     </div>
-    <button class="btn btn-primary" onclick="toggleDonut()">Chart Donut</button><br>
+    <button class="btn btn-primary mt-2" onclick="toggleDonut()">Ubah Chart</button><br>
     <a href="admin.php" class="btn btn-primary mt-2">Kembali</a>
 </div>
 <script>
