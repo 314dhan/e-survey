@@ -91,10 +91,64 @@ $rowDs = mysqli_fetch_all($pertnyaanDs, MYSQLI_ASSOC);
           display: false
         }, // Menyembunyikan legenda
         width: 200, // Lebar chart
-        height: 200 // Tinggi chart
+        height: 200, // Tinggi chart
+        plugins: {
+          tooltip: {
+            callbacks: {
+              label: function(context) {
+                var label = context.label || '';
+                var value = context.raw || 0;
+                var dataset = context.dataset || {};
+                var total = dataset.data.reduce(function(previousValue, currentValue) {
+                  return previousValue + currentValue;
+                });
+                var percentage = total > 0 ? ((value / total) * 100).toFixed(2) + '%' : '0%';
+                return label + ': ' + percentage;
+              }
+            }
+          }
+        }
       }
     });
     charts.push(myChart);
+  }
+
+  // Array untuk menyimpan kesimpulan dari setiap pertanyaan
+  var kesimpulan = [];
+
+  // Menghitung kesimpulan untuk setiap pertanyaan
+  for (var i = 0; i < jawabanDs.length; i++) {
+    var totalKurang = jawabanDs[i][0];
+    var totalCukup = jawabanDs[i][1];
+    var totalBaik = jawabanDs[i][2];
+
+    var totalJawaban = totalKurang + totalCukup + totalBaik;
+    var persentaseKurang = (totalKurang / totalJawaban) * 100;
+    var persentaseCukup = (totalCukup / totalJawaban) * 100;
+    var persentaseBaik = (totalBaik / totalJawaban) * 100;
+
+    var kesimpulanPertanyaan = "";
+
+    if (persentaseBaik > persentaseCukup && persentaseBaik > persentaseKurang) {
+      kesimpulanPertanyaan = "Mayoritas responden menjawab 'Sangat Baik'.";
+    } else if (persentaseCukup > persentaseBaik && persentaseCukup > persentaseKurang) {
+      kesimpulanPertanyaan = "Mayoritas responden menjawab 'Cukup'.";
+    } else if (persentaseKurang > persentaseBaik && persentaseKurang > persentaseCukup) {
+      kesimpulanPertanyaan = "Mayoritas responden menjawab 'Kurang'.";
+    } else {
+      kesimpulanPertanyaan = "Tidak ada mayoritas jawaban yang signifikan.";
+    }
+
+    kesimpulan.push(kesimpulanPertanyaan);
+  }
+
+  // Menampilkan kesimpulan untuk setiap pertanyaan
+  for (var i = 0; i < kesimpulan.length; i++) {
+    var chartId = "chart" + (i + 9);
+    var chartContainer = document.getElementById(chartId).parentNode;
+    var kesimpulanText = document.createElement("p");
+    kesimpulanText.textContent = kesimpulan[i];
+    chartContainer.appendChild(kesimpulanText);
   }
 
   function toggleDonut() {
