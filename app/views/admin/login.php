@@ -5,16 +5,14 @@ session_start(); //memulai sesi
 // Cek apakah pengguna sudah login menggunakan session
 if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true){
     // Jika pengguna sudah login, redirect ke halaman yang sesuai
-    if($_SESSION['role'] === 'admin'){
+    if($_SESSION['role'] === 'mahasiswa'){
         header("Location: mahasiswa/mahasiswa.php");
-        exit;
-    } elseif($_SESSION['role'] === 'dosen'){
-        header("Location: dosen/dosen.php");
         exit;
     }
 }
 
 $pageTitle = "Login Admin";
+$navName = "E-Survey Kampus Universitas Serang Raya";
 require "../header.php";
 ?>
 
@@ -23,15 +21,16 @@ require "../header.php";
         <div class="row justify-content-center">
             <div class="col-md-6">
                 <div class="login-container">
-                        <?php if(isset($error)) { ?>
-                            <div class="alert alert-danger" role="alert">
-                                <?php echo $error; ?>
-                            </div>
-                        <?php } ?>
+                    <?php if (isset($error)) { ?>
+                        <div class="alert alert-danger" role="alert">
+                            <?php echo $error; ?>
+                        </div>
+                    <?php } ?>
                     <h2 class="text-center">Admin Login</h2>
+                    <h5 class="text-center">E-Survei Kampus UNSERA</h5>
                     <form method="POST" action="../../controller/adminController.php">
                         <div class="mb-3">
-                            <label for="username" class="form-label">Username:</label>
+                            <label for="username" class="form-label">Email:</label>
                             <input type="username" id="username" name="username" class="form-control" autocomplete="off" required>
                         </div>
                         <div class="mb-3">
@@ -51,5 +50,3 @@ require "../header.php";
     </div>
 
     <script src="bootstrap.min.js"></script>
-
-

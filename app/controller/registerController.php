@@ -7,7 +7,6 @@ if(isset($_POST['email']) && isset($_POST['nama']) && isset($_POST['password']) 
     $password = $_POST['password'];
     $role = $_POST['role'];
 
-    // Hash password
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
     // Memeriksa peran (role) dan menentukan tabel yang sesuai

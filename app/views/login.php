@@ -36,10 +36,11 @@ if(isset($_SESSION['error_message'])){
                         </script>
                     <?php } ?>
                     <h2 class="text-center">Form Login</h2>
+                    <h5 class="text-center">E-Survei Kampus UNSERA</h5>
                     <form method="POST" action="../controller/loginController.php">
                         <div class="mb-3">
                             <label for="email" class="form-label">Email:</label>
-                            <input type="email" id="email" name="email" class="form-control" autocomplete="off" required>
+                            <input type="email" id="email" name="email" class="form-control" autocomplete="off" autofocus required>
                         </div>
                         <div class="mb-3">
                             <label for="password" class="form-label">Password:</label>
@@ -54,7 +55,8 @@ if(isset($_SESSION['error_message'])){
                         </div>
                     </form>
                     <div class="d-grid mt-3">
-                        <a href="admin/login.php"><p>Login Sebagai Admin?</p></a>
+                        <p>Admin?</p>
+                        <a href="admin/login.php" class="btn btn-success">Masuk <i class="fa-solid fa-lock"></i></a>
                     </div>
                 </div>
             </div>

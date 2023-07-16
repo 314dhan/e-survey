@@ -1,9 +1,5 @@
 body {
-    background-color: #bbb4b4;
-}
-
-a{
-    text-decoration: none;
+    background-image: url(../picture/bg.webp);
 }
 
 .login-container {
@@ -23,4 +19,9 @@ a{
 .login-container input[type="email"],
 .login-container input[type="password"] {
     border-radius: 4px;
+}
+
+canvas{
+    height: 250px;
+    width: 230px;
 }

@@ -1,10 +1,7 @@
 <?php
-session_start();
-
 require "../config/Connection.php";
 
-if (isset($_POST['submit'])) {
-    // Mendapatkan data dari form
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nama = $_POST['nama'];
     $jawaban1 = $_POST['jawaban1'];
     $jawaban2 = $_POST['jawaban2'];
@@ -15,23 +12,21 @@ if (isset($_POST['submit'])) {
     $jawaban7 = $_POST['jawaban7'];
     $jawaban8 = $_POST['jawaban8'];
 
-    // Menghindari serangan SQL Injection dengan menggunakan prepared statement
-    $sql = "INSERT INTO survey_mhs (nama, jawaban1, jawaban2, jawaban3, jawaban4, jawaban5, jawaban6, jawaban7, jawaban8) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
-    $stmt = mysqli_prepare($conn, $sql);
-    mysqli_stmt_bind_param($stmt, "sssssssss", $nama, $jawaban1, $jawaban2, $jawaban3, $jawaban4, $jawaban5, $jawaban6, $jawaban7, $jawaban8);
+    $query = "INSERT INTO survey_mhs (nama, jawaban1, jawaban2, jawaban3, jawaban4, jawaban5, jawaban6, jawaban7, jawaban8) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    $stmt = mysqli_prepare($conn, $query);
+    mysqli_stmt_bind_param($stmt, 'sssssssss', $nama, $jawaban1, $jawaban2, $jawaban3, $jawaban4, $jawaban5, $jawaban6, $jawaban7, $jawaban8);
 
-    // Eksekusi prepared statement
     if (mysqli_stmt_execute($stmt)) {
-        // Jika penyimpanan sukses, redirect ke halaman mahasiswa.php
-        header("Location: ../views/mahasiswa/mahasiswa.php");
-        echo "berhasil";
-        exit;
+        $response = array('status' => 'success');
+        echo json_encode($response);
     } else {
-        // Jika terjadi kesalahan saat menyimpan, tampilkan pesan error
-        echo "Error: " . mysqli_stmt_error($stmt);
+        $response = array('status' => 'error', 'message' => mysqli_stmt_error($stmt));
+        echo json_encode($response);
     }
 
-    // Menutup statement
     mysqli_stmt_close($stmt);
+    mysqli_close($conn);
+} else {
+    $response = array('status' => 'error', 'message' => 'Metode HTTP tidak valid');
+    echo json_encode($response);
 }
-?>

@@ -1,12 +1,10 @@
 <?php
 require_once __DIR__ . '/../config/connection.php';
 
-// Cek apakah ada data login yang disubmit
 if(isset($_POST['login'])){
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    // Query untuk mendapatkan data admin berdasarkan username
     $queryAdmin = "SELECT * FROM admin WHERE username = ?";
     $stmtAdmin = mysqli_prepare($conn, $queryAdmin);
     mysqli_stmt_bind_param($stmtAdmin, "s", $username);
@@ -29,7 +27,6 @@ if(isset($_POST['login'])){
             header("Location: ../views/admin/admin.php");
             exit;
         } else {
-            // Jika password tidak cocok, tampilkan pesan error
             $error = "Password salah!";
             echo "<script>
             alert('$error');
