@@ -1,4 +1,4 @@
 # esurvey
-tugas project kampus web 2
+WEB ACADEMIC PROJECT
 
-kode php dengan menggunakan cd seperti chartjs, bootstrap, fontawesome, dan sweetalert
+php code dengan menggunakan chartjs, bootstrap, fontawesome, dan sweetalert
