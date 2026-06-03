@@ -1,18 +1,48 @@
 @startuml
-
-actor "pengisi survey" as user
-node "web e-survey kampus"{
-    node "Model" as model
-    node "Controller" as controller
-    node "View" as view
+left to right direction
+skinparam packageStyle rectangle
+skinparam actorStyle awesome
+skinparam usecase {
+  BackgroundColor White
+  BorderColor #2d6a4f
+  ArrowColor #2d6a4f
+  ActorBorderColor #2d6a4f
+  ActorBackgroundColor #d8f3dc
 }
 
-database "Mysql" as mysql
+actor "Mahasiswa" as mhs
+actor "Dosen"     as ds
+actor "Admin"     as adm
 
-user --> view : 1
-view --> controller: 2
-view --> model : 3
-view --> mysql : 4
-view --> user : 5
+rectangle "Sistem E-Survei Kampus UNSERA" {
+    usecase "Login"                  as UC_LOGIN
+    usecase "Registrasi Akun"        as UC_REG
+    usecase "Mengisi Survei"         as UC_SURVEY
+    usecase "Logout"                 as UC_LOGOUT
+    usecase "Lihat Tabel Survei"     as UC_TABLE
+    usecase "Lihat Chart Dosen"      as UC_CHART_DS
+    usecase "Lihat Chart Mahasiswa"  as UC_CHART_MHS
+    usecase "Kelola Pertanyaan"      as UC_PERTANYAAN
+    usecase "Perbarui Pertanyaan"    as UC_UPDATE
+}
+
+mhs --> UC_LOGIN
+mhs --> UC_REG
+mhs --> UC_SURVEY
+mhs --> UC_LOGOUT
+
+ds --> UC_LOGIN
+ds --> UC_REG
+ds --> UC_SURVEY
+ds --> UC_LOGOUT
+
+adm --> UC_LOGIN
+adm --> UC_TABLE
+adm --> UC_CHART_DS
+adm --> UC_CHART_MHS
+adm --> UC_PERTANYAAN
+adm --> UC_LOGOUT
+
+UC_PERTANYAAN ..> UC_UPDATE : <<include>>
 
 @enduml
