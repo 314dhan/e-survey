@@ -52,7 +52,7 @@ $skala = [
 ?>
 
 <div class="survey-header">
-    <div class="container">
+    <div class="container-fluid px-4">
         <div class="survey-header-inner">
             <div class="survey-role-badge">Mahasiswa</div>
             <h1 class="survey-welcome">Selamat datang, <?= htmlspecialchars($nama); ?>.</h1>
@@ -62,7 +62,7 @@ $skala = [
 </div>
 
 <div class="survey-body">
-    <div class="container">
+    <div class="container-fluid px-4" style="max-width:1200px;margin:0 auto;">
         <form action="../../controller/surveyControllerMhs.php" method="post" id="surveyForm">
             <input type="hidden" name="nama" value="<?= htmlspecialchars($nama); ?>">
 
@@ -88,7 +88,7 @@ $skala = [
             <?php endforeach; ?>
 
             <div class="survey-submit-bar">
-                <div class="container d-flex align-items-center gap-3">
+                <div class="container-fluid px-4 d-flex align-items-center gap-3" style="max-width:1200px;margin:0 auto;">
                     <button type="submit" class="btn btn-success px-5">
                         Kirim Survei <i class="fa-solid fa-paper-plane ms-1"></i>
                     </button>

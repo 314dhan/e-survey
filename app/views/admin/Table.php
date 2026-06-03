@@ -32,14 +32,13 @@ function getJawabanTeks($nilai)
 
 function getBadgeClass($nilai)
 {
-    if ($nilai <= 1) return "ans-badge ans-badge-1";
-    if ($nilai <= 2) return "ans-badge ans-badge-2";
-    return "ans-badge ans-badge-3";
+    $map = [1 => 'ans-badge-1', 2 => 'ans-badge-2', 3 => 'ans-badge-3', 4 => 'ans-badge-4', 5 => 'ans-badge-5'];
+    return 'ans-badge ' . ($map[$nilai] ?? 'ans-badge-3');
 }
 ?>
 
 <div class="admin-body">
-    <div class="container">
+    <div class="container-fluid px-4">
         <div class="d-flex align-items-center justify-content-between mb-4">
             <div>
                 <h1 class="admin-page-title mb-1">Tabel Survei</h1>

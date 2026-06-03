@@ -12,7 +12,7 @@ require "../navbar.php";
 ?>
 
 <div class="admin-body">
-    <div class="container">
+    <div class="container-fluid px-4">
         <h1 class="admin-page-title">Dashboard</h1>
         <p class="admin-page-sub">Ringkasan hasil survei kampus Universitas Serang Raya.</p>
 
