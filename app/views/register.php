@@ -3,54 +3,58 @@ $pageTitle = "Daftar";
 require "header.php";
 ?>
 
-<div class="auth-wrap">
-    <div class="auth-card">
-        <div class="auth-brand">
-            <div class="auth-brand-mark">
-                <i class="fa-solid fa-chart-simple"></i>
-            </div>
-            <div>
-                <div class="auth-brand-name">E-Survei UNSERA</div>
-                <div class="auth-brand-sub">Universitas Serang Raya</div>
-            </div>
+<div class="auth-layout">
+    <div class="auth-brand">
+        <div class="auth-brand-logo">
+            <div class="auth-brand-logo-dot"></div>
+            <span class="auth-brand-logo-name">E-Survei UNSERA</span>
         </div>
+        <div class="auth-brand-body">
+            <h1 class="auth-brand-heading">Bergabung dan mulai berkontribusi.</h1>
+            <p class="auth-brand-desc">Daftarkan diri Anda untuk berpartisipasi dalam survei kepuasan akademik Universitas Serang Raya.</p>
+        </div>
+        <div class="auth-brand-footer">&copy; <?= date('Y') ?> Universitas Serang Raya</div>
+    </div>
 
-        <h1 class="auth-heading">Buat Akun</h1>
-        <p class="auth-subheading">Daftarkan diri untuk mengisi survei kampus.</p>
+    <div class="auth-form-panel">
+        <div class="auth-form-inner">
+            <h2 class="auth-form-title">Buat Akun</h2>
+            <p class="auth-form-sub">Lengkapi data berikut untuk mendaftar.</p>
 
-        <form action="../controller/registerController.php" method="POST">
-            <div class="mb-3">
-                <label for="email" class="form-label">Email</label>
-                <input type="email" class="form-control" id="email" name="email"
-                       placeholder="nama@unsera.ac.id" autocomplete="email" autofocus required>
-            </div>
-            <div class="mb-3">
-                <label for="nama" class="form-label">Nama Lengkap</label>
-                <input type="text" class="form-control" id="nama" name="nama"
-                       placeholder="Nama Anda" autocomplete="name" required>
-            </div>
-            <div class="mb-3">
-                <label for="password" class="form-label">Password</label>
-                <input type="password" class="form-control" id="password" name="password"
-                       placeholder="Buat password" autocomplete="new-password" required>
-            </div>
-            <div class="mb-4">
-                <label for="role" class="form-label">Peran</label>
-                <select class="form-select" id="role" name="role" required>
-                    <option value="" disabled selected>Pilih peran Anda</option>
-                    <option value="dosen">Dosen</option>
-                    <option value="mahasiswa">Mahasiswa</option>
-                </select>
-            </div>
-            <div class="d-grid">
-                <button type="submit" name="register" class="btn btn-primary">
-                    Daftar <i class="fa-solid fa-id-card ms-1"></i>
-                </button>
-            </div>
-        </form>
+            <form action="../controller/registerController.php" method="POST">
+                <div class="form-row">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="email" name="email"
+                           placeholder="nama@unsera.ac.id" autocomplete="email" autofocus required>
+                </div>
+                <div class="form-row">
+                    <label for="nama" class="form-label">Nama Lengkap</label>
+                    <input type="text" class="form-control" id="nama" name="nama"
+                           placeholder="Nama Anda" autocomplete="name" required>
+                </div>
+                <div class="form-row">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="password" name="password"
+                           placeholder="Buat password" autocomplete="new-password" required>
+                </div>
+                <div class="form-row">
+                    <label for="role" class="form-label">Peran</label>
+                    <select class="form-select" id="role" name="role" required>
+                        <option value="" disabled selected>Pilih peran Anda</option>
+                        <option value="dosen">Dosen</option>
+                        <option value="mahasiswa">Mahasiswa</option>
+                    </select>
+                </div>
+                <div class="auth-submit">
+                    <button type="submit" name="register" class="btn btn-primary btn-lg" style="width:100%;justify-content:center;">
+                        Daftar <i class="fa-solid fa-arrow-right ms-1"></i>
+                    </button>
+                </div>
+            </form>
 
-        <div class="auth-footer-link text-center">
-            Sudah punya akun? <a href="login.php">Masuk</a>
+            <div class="auth-footer">
+                Sudah punya akun? <a href="login.php">Masuk</a>
+            </div>
         </div>
     </div>
 </div>

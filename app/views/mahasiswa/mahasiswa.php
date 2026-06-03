@@ -5,30 +5,14 @@ ini_set('display_errors', 1);
 
 require "../../config/connection.php";
 
-if (isset($_COOKIE['user_role'])) {
-    $user_role = $_COOKIE['user_role'];
-    if ($user_role === 'mahasiswa') {
-        header("Location: ../views/mahasiswa/mahasiswa.php");
-        exit;
-    } elseif ($user_role === 'dosen') {
-        header("Location: ../views/dosen/dosen.php");
-        exit;
-    }
-}
-
 if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
-    header("Location: login.php");
-    exit;
+    header("Location: ../login.php"); exit;
 }
 
-$role = $_SESSION['role'];
 $nama = $_SESSION['nama'];
 
-$sql = "SELECT * FROM pertanyaan_mhs";
-$result = mysqli_query($conn, $sql);
-
-$pageTitle = "Survei Mahasiswa";
-$navName = "E-Survei UNSERA";
+$pageTitle  = "Survei Mahasiswa";
+$navName    = "E-Survei UNSERA";
 require "../navbar.php";
 
 $pertanyaan = [
@@ -42,57 +26,64 @@ $pertanyaan = [
     8 => "Seberapa efektif kampus ini dalam memberikan dukungan dan bimbingan karier bagi mahasiswa?",
 ];
 
-$skala = [
-    1 => ["label" => "Sangat Kurang", "short" => "SK"],
-    2 => ["label" => "Kurang",        "short" => "K"],
-    3 => ["label" => "Cukup",         "short" => "C"],
-    4 => ["label" => "Baik",          "short" => "B"],
-    5 => ["label" => "Sangat Baik",   "short" => "SB"],
-];
+$total = count($pertanyaan);
 ?>
 
 <div class="survey-header">
-    <div class="container-fluid px-4">
-        <div class="survey-header-inner">
-            <div class="survey-role-badge">Mahasiswa</div>
-            <h1 class="survey-welcome">Selamat datang, <?= htmlspecialchars($nama); ?>.</h1>
-            <p class="survey-welcome-sub">Isi survei berikut untuk membantu kampus meningkatkan kualitas layanan.</p>
-        </div>
+    <div class="page-wrap-wide">
+        <div class="survey-role-tag">Mahasiswa</div>
+        <h1 class="survey-header-name">Selamat datang, <?= htmlspecialchars($nama); ?>.</h1>
+        <p class="survey-header-desc">Isi survei berikut untuk membantu kampus meningkatkan kualitas layanan.</p>
+        <p class="survey-header-meta"><?= $total; ?> pertanyaan &middot; Skala 1–5</p>
     </div>
 </div>
 
 <div class="survey-body">
-    <div class="container-fluid px-4" style="max-width:1200px;margin:0 auto;">
+    <div class="page-wrap-wide">
         <form action="../../controller/surveyControllerMhs.php" method="post" id="surveyForm">
             <input type="hidden" name="nama" value="<?= htmlspecialchars($nama); ?>">
 
-            <p class="survey-section-title">Pertanyaan Survei</p>
+            <div class="survey-q-list">
+                <?php foreach ($pertanyaan as $no => $teks): ?>
+                <div class="survey-q" id="sq-<?= $no; ?>">
+                    <div class="survey-q-num">Pertanyaan <?= str_pad($no, 2, '0', STR_PAD_LEFT); ?></div>
+                    <p class="survey-q-text"><?= htmlspecialchars($teks); ?></p>
 
-            <?php foreach ($pertanyaan as $no => $teks): ?>
-            <div class="survey-q">
-                <div class="survey-q-num">Pertanyaan <?= $no; ?></div>
-                <p class="survey-q-text"><?= htmlspecialchars($teks); ?></p>
-                <div class="survey-scale">
-                    <?php foreach ($skala as $val => $info): ?>
-                    <div class="scale-opt">
-                        <input type="radio" name="jawaban<?= $no; ?>" value="<?= $val; ?>"
-                               id="q<?= $no; ?>v<?= $val; ?>" required>
-                        <label class="scale-lbl" for="q<?= $no; ?>v<?= $val; ?>">
-                            <span class="sv"><?= $val; ?></span>
-                            <span class="st"><?= htmlspecialchars($info['label']); ?></span>
-                        </label>
+                    <div class="survey-scale-wrap">
+                        <div class="survey-scale" role="radiogroup" aria-label="Jawaban pertanyaan <?= $no; ?>">
+                            <?php for ($v = 1; $v <= 5; $v++): ?>
+                            <div class="scale-opt">
+                                <input type="radio"
+                                       name="jawaban<?= $no; ?>"
+                                       id="q<?= $no; ?>v<?= $v; ?>"
+                                       value="<?= $v; ?>"
+                                       required
+                                       onchange="markAnswered(<?= $no; ?>)">
+                                <label class="scale-dot" for="q<?= $no; ?>v<?= $v; ?>" title="<?= $v; ?>">
+                                    <span class="scale-dot-val"><?= $v; ?></span>
+                                </label>
+                                <span class="scale-dot-lbl">
+                                    <?php
+                                    $labels = [1=>'Sangat Kurang', 2=>'Kurang', 3=>'Cukup', 4=>'Baik', 5=>'Sangat Baik'];
+                                    if ($v === 1 || $v === 5) echo htmlspecialchars($labels[$v]);
+                                    ?>
+                                </span>
+                            </div>
+                            <?php endfor; ?>
+                        </div>
                     </div>
-                    <?php endforeach; ?>
                 </div>
+                <?php endforeach; ?>
             </div>
-            <?php endforeach; ?>
 
             <div class="survey-submit-bar">
-                <div class="container-fluid px-4 d-flex align-items-center gap-3" style="max-width:1200px;margin:0 auto;">
-                    <button type="submit" class="btn btn-success px-5">
-                        Kirim Survei <i class="fa-solid fa-paper-plane ms-1"></i>
-                    </button>
-                    <span class="text-muted" style="font-size: var(--text-sm);">Jawaban tidak dapat diubah setelah dikirim.</span>
+                <div class="page-wrap-wide">
+                    <div class="survey-submit-inner">
+                        <button type="submit" class="btn btn-success btn-lg">
+                            Kirim Survei <i class="fa-solid fa-paper-plane ms-1"></i>
+                        </button>
+                        <span class="survey-submit-note">Jawaban tidak dapat diubah setelah dikirim.</span>
+                    </div>
                 </div>
             </div>
         </form>
@@ -100,41 +91,29 @@ $skala = [
 </div>
 
 <script>
+function markAnswered(no) {
+    var el = document.getElementById('sq-' + no);
+    if (el) el.classList.add('is-answered');
+}
+
 $(document).ready(function () {
-    $('#surveyForm').submit(function (event) {
-        event.preventDefault();
-        var formData = $(this).serialize();
+    $('#surveyForm').submit(function (e) {
+        e.preventDefault();
         $.ajax({
             url: '../../controller/surveyControllerMhs.php',
             type: 'POST',
-            data: formData,
+            data: $(this).serialize(),
             dataType: 'json',
-            success: function (response) {
-                if (response.status === 'success') {
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Survei Terkirim',
-                        text: 'Terima kasih atas partisipasi Anda!',
-                        confirmButtonColor: 'oklch(0.47 0.155 152)'
-                    }).then(function () {
-                        window.location.href = '../../controller/logoutController.php';
-                    });
+            success: function (r) {
+                if (r.status === 'success') {
+                    Swal.fire({ icon: 'success', title: 'Survei Terkirim', text: 'Terima kasih atas partisipasi Anda!', confirmButtonColor: 'oklch(0.47 0.155 152)' })
+                        .then(function () { window.location.href = '../../controller/logoutController.php'; });
                 } else {
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Gagal Mengirim',
-                        text: response.message,
-                        confirmButtonColor: 'oklch(0.47 0.155 152)'
-                    });
+                    Swal.fire({ icon: 'error', title: 'Gagal Mengirim', text: r.message, confirmButtonColor: 'oklch(0.47 0.155 152)' });
                 }
             },
             error: function () {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Terjadi Kesalahan',
-                    text: 'Harap pastikan semua pertanyaan telah dijawab.',
-                    confirmButtonColor: 'oklch(0.47 0.155 152)'
-                });
+                Swal.fire({ icon: 'error', title: 'Terjadi Kesalahan', text: 'Pastikan semua pertanyaan telah dijawab.', confirmButtonColor: 'oklch(0.47 0.155 152)' });
             }
         });
     });

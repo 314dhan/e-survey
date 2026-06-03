@@ -2,138 +2,90 @@
 session_start();
 
 if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true || $_SESSION['role'] !== 'admin') {
-    header("Location: login.php");
-    exit;
+    header("Location: login.php"); exit;
 }
 
 require "../../config/Connection.php";
 
 $pageTitle = "Tabel Survei";
-$navName = "E-Survei UNSERA";
+$navName   = "E-Survei UNSERA";
 require "../navbar.php";
 
-$sql = "SELECT * FROM survey_ds";
-$resultDs = mysqli_query($conn, $sql);
+$resultDs  = mysqli_query($conn, "SELECT * FROM survey_ds");
+$resultMhs = mysqli_query($conn, "SELECT * FROM survey_mhs");
 
-$sql = "SELECT * FROM survey_mhs";
-$resultMhs = mysqli_query($conn, $sql);
-
-function getJawabanTeks($nilai)
-{
-    switch ($nilai) {
-        case 1: return "Sangat Kurang";
-        case 2: return "Kurang";
-        case 3: return "Cukup";
-        case 4: return "Baik";
-        case 5: return "Sangat Baik";
-        default: return "—";
-    }
+function getLabel($v) {
+    return [1=>'Sangat Kurang', 2=>'Kurang', 3=>'Cukup', 4=>'Baik', 5=>'Sangat Baik'][$v] ?? '—';
 }
 
-function getBadgeClass($nilai)
-{
-    $map = [1 => 'ans-badge-1', 2 => 'ans-badge-2', 3 => 'ans-badge-3', 4 => 'ans-badge-4', 5 => 'ans-badge-5'];
-    return 'ans-badge ' . ($map[$nilai] ?? 'ans-badge-3');
+function getPill($v) {
+    return '<span class="ans-pill ans-' . (int)$v . '">' . htmlspecialchars(getLabel($v)) . '</span>';
 }
 ?>
 
-<div class="admin-body">
-    <div class="container-fluid px-4">
-        <div class="d-flex align-items-center justify-content-between mb-4">
+<div class="page-body">
+    <div class="page-wrap-wide">
+        <div class="page-header">
             <div>
-                <h1 class="admin-page-title mb-1">Tabel Survei</h1>
-                <p class="admin-page-sub mb-0">Seluruh data hasil survei dosen dan mahasiswa.</p>
+                <h1 class="page-title">Tabel Survei</h1>
+                <p class="page-sub">Seluruh data jawaban survei dosen dan mahasiswa.</p>
             </div>
-            <a href="admin.php" class="btn btn-outline-secondary btn-sm">
-                <i class="fa-solid fa-arrow-left me-1"></i> Kembali
+            <a href="admin.php" class="btn btn-secondary btn-sm">
+                <i class="fa-solid fa-arrow-left"></i> Kembali
             </a>
         </div>
 
-        <div class="mb-5">
-            <h2 class="table-section-title">Survei Dosen</h2>
-            <div class="table-responsive">
-                <table class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th>No</th>
-                            <th>Nama</th>
-                            <th>P1</th>
-                            <th>P2</th>
-                            <th>P3</th>
-                            <th>P4</th>
-                            <th>P5</th>
-                            <th>P6</th>
-                            <th>P7</th>
-                            <th>P8</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php
-                        $no = 1;
-                        while ($row = mysqli_fetch_assoc($resultDs)):
-                        ?>
-                        <tr>
-                            <td><?= $no; ?></td>
-                            <td><?= htmlspecialchars($row['nama']); ?></td>
-                            <?php for ($j = 1; $j <= 8; $j++): ?>
-                            <td>
-                                <span class="<?= getBadgeClass($row['jawaban'.$j]); ?>">
-                                    <?= getJawabanTeks($row['jawaban'.$j]); ?>
-                                </span>
-                            </td>
-                            <?php endfor; ?>
-                        </tr>
-                        <?php $no++; endwhile; ?>
-                    </tbody>
-                </table>
-            </div>
+        <h2 class="section-heading">Survei Dosen</h2>
+        <div class="table-wrap">
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>No</th><th>Nama</th>
+                        <th>P1</th><th>P2</th><th>P3</th><th>P4</th>
+                        <th>P5</th><th>P6</th><th>P7</th><th>P8</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php $n = 1; while ($r = mysqli_fetch_assoc($resultDs)): ?>
+                    <tr>
+                        <td><?= $n++; ?></td>
+                        <td><?= htmlspecialchars($r['nama']); ?></td>
+                        <?php for ($j = 1; $j <= 8; $j++): ?>
+                        <td><?= getPill($r['jawaban'.$j]); ?></td>
+                        <?php endfor; ?>
+                    </tr>
+                    <?php endwhile; ?>
+                </tbody>
+            </table>
         </div>
 
-        <div class="mb-4">
-            <h2 class="table-section-title">Survei Mahasiswa</h2>
-            <div class="table-responsive">
-                <table class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th>No</th>
-                            <th>Nama</th>
-                            <th>P1</th>
-                            <th>P2</th>
-                            <th>P3</th>
-                            <th>P4</th>
-                            <th>P5</th>
-                            <th>P6</th>
-                            <th>P7</th>
-                            <th>P8</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php
-                        $no = 1;
-                        while ($row = mysqli_fetch_assoc($resultMhs)):
-                        ?>
-                        <tr>
-                            <td><?= $no; ?></td>
-                            <td><?= htmlspecialchars($row['nama']); ?></td>
-                            <?php for ($j = 1; $j <= 8; $j++): ?>
-                            <td>
-                                <span class="<?= getBadgeClass($row['jawaban'.$j]); ?>">
-                                    <?= getJawabanTeks($row['jawaban'.$j]); ?>
-                                </span>
-                            </td>
-                            <?php endfor; ?>
-                        </tr>
-                        <?php $no++; endwhile; ?>
-                    </tbody>
-                </table>
-            </div>
+        <h2 class="section-heading">Survei Mahasiswa</h2>
+        <div class="table-wrap">
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>No</th><th>Nama</th>
+                        <th>P1</th><th>P2</th><th>P3</th><th>P4</th>
+                        <th>P5</th><th>P6</th><th>P7</th><th>P8</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php $n = 1; while ($r = mysqli_fetch_assoc($resultMhs)): ?>
+                    <tr>
+                        <td><?= $n++; ?></td>
+                        <td><?= htmlspecialchars($r['nama']); ?></td>
+                        <?php for ($j = 1; $j <= 8; $j++): ?>
+                        <td><?= getPill($r['jawaban'.$j]); ?></td>
+                        <?php endfor; ?>
+                    </tr>
+                    <?php endwhile; ?>
+                </tbody>
+            </table>
         </div>
 
-        <div class="pb-3">
-            <a href="admin.php" class="btn btn-outline-secondary btn-sm">
-                <i class="fa-solid fa-arrow-left me-1"></i> Kembali ke Dashboard
-            </a>
-        </div>
+        <a href="admin.php" class="btn btn-secondary btn-sm">
+            <i class="fa-solid fa-arrow-left"></i> Kembali ke Dashboard
+        </a>
     </div>
 </div>
 
