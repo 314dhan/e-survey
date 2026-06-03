@@ -37,16 +37,16 @@ require "../header.php";
         <h1 class="auth-heading">Masuk Admin</h1>
         <p class="auth-subheading">Akses terbatas untuk administrator.</p>
 
-        <form method="POST" action="../../controller/adminController.php">
+        <form method="POST" action="../../controller/adminController.php" autocomplete="off">
             <div class="mb-3">
                 <label for="username" class="form-label">Username</label>
                 <input type="text" id="username" name="username" class="form-control"
-                       placeholder="Username admin" autocomplete="username" required>
+                       placeholder="Username admin" autocomplete="off" required>
             </div>
             <div class="mb-4">
                 <label for="password" class="form-label">Password</label>
                 <input type="password" id="password" name="password" class="form-control"
-                       placeholder="••••••••" autocomplete="current-password" required>
+                       placeholder="••••••••" autocomplete="off" required>
             </div>
             <div class="d-grid">
                 <button type="submit" name="login" class="btn btn-primary">

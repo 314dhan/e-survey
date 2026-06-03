@@ -41,16 +41,16 @@ if (isset($_SESSION['error_message'])) {
             <h2 class="auth-form-title">Masuk</h2>
             <p class="auth-form-sub">Masukkan akun Anda untuk melanjutkan.</p>
 
-            <form method="POST" action="../controller/loginController.php">
+            <form method="POST" action="../controller/loginController.php" autocomplete="off">
                 <div class="form-row">
                     <label for="email" class="form-label">Email</label>
                     <input type="email" id="email" name="email" class="form-control"
-                           placeholder="nama@unsera.ac.id" autocomplete="email" autofocus required>
+                           placeholder="nama@unsera.ac.id" autocomplete="off" autofocus required>
                 </div>
                 <div class="form-row">
                     <label for="password" class="form-label">Password</label>
                     <input type="password" id="password" name="password" class="form-control"
-                           placeholder="••••••••" autocomplete="current-password" required>
+                           placeholder="••••••••" autocomplete="off" required>
                 </div>
                 <div class="auth-submit">
                     <button type="submit" name="login" class="btn btn-primary btn-lg" style="width:100%;justify-content:center;">

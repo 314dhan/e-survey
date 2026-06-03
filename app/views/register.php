@@ -21,21 +21,21 @@ require "header.php";
             <h2 class="auth-form-title">Buat Akun</h2>
             <p class="auth-form-sub">Lengkapi data berikut untuk mendaftar.</p>
 
-            <form action="../controller/registerController.php" method="POST">
+            <form action="../controller/registerController.php" method="POST" autocomplete="off">
                 <div class="form-row">
                     <label for="email" class="form-label">Email</label>
                     <input type="email" class="form-control" id="email" name="email"
-                           placeholder="nama@unsera.ac.id" autocomplete="email" autofocus required>
+                           placeholder="nama@unsera.ac.id" autocomplete="off" autofocus required>
                 </div>
                 <div class="form-row">
                     <label for="nama" class="form-label">Nama Lengkap</label>
                     <input type="text" class="form-control" id="nama" name="nama"
-                           placeholder="Nama Anda" autocomplete="name" required>
+                           placeholder="Nama Anda" autocomplete="off" required>
                 </div>
                 <div class="form-row">
                     <label for="password" class="form-label">Password</label>
                     <input type="password" class="form-control" id="password" name="password"
-                           placeholder="Buat password" autocomplete="new-password" required>
+                           placeholder="Buat password" autocomplete="off" required>
                 </div>
                 <div class="form-row">
                     <label for="role" class="form-label">Peran</label>
