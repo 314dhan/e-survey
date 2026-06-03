@@ -1,0 +1,8 @@
+/public/bootstrap
+/public/fontawesome
+/tests/
+/vendor/
+/app/database
+/src/
+composer.json
+composer.lock

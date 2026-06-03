@@ -1,0 +1,65 @@
+@startuml
+entity Ds {
+  id_dosen: int <<PK>>
+  nama: string
+  email: string
+  password: string
+}
+entity admin {
+  id: int <<PK>>
+  username: string
+  password: string
+}
+entity pertanyaan_Ds {
+  no: int <<PK>>
+  pertanyaan: string
+}
+entity pertanyaan_Mhs {
+  no: int <<PK>>
+  pertanyaan: string
+}
+
+entity mhs {
+  id_mahasiswa : int <<PK>>
+  email : varchar(255)
+  nama : varchar(255)
+  password : varchar(255)
+}
+
+entity survey_mhs {
+  no : int <<PK>>
+  nama : varchar(255) <<FK>>
+  jawaban1: string
+  jawaban2: string
+  jawaban3: string
+  jawaban4: string
+  jawaban5: string
+  jawaban6: string
+  jawaban7: string
+  jawaban8: string
+}
+
+mhs ||--o{ survey_mhs : mempunyai
+
+entity Ds {
+  id_mahasiswa : int <<PK>>
+  email : varchar(255)
+  nama : varchar(255)
+  password : varchar(255)
+}
+
+entity survey_Ds {
+  no : int <<PK>>
+  nama : varchar(255) <<FK>>
+  jawaban1: string
+  jawaban2: string
+  jawaban3: string
+  jawaban4: string
+  jawaban5: string
+  jawaban6: string
+  jawaban7: string
+  jawaban8: string
+}
+
+Ds ||--o{ survey_Ds : mempunyai
+@enduml
